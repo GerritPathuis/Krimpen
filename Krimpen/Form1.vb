@@ -2,6 +2,8 @@
 Imports System
 Imports System.Globalization
 Imports System.Threading
+Imports Word = Microsoft.Office.Interop.Word
+Imports System.Runtime.InteropServices
 
 Public Class Form1
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, NumericUpDown9.ValueChanged, NumericUpDown7.ValueChanged, NumericUpDown6.ValueChanged, NumericUpDown5.ValueChanged, NumericUpDown4.ValueChanged, NumericUpDown2.ValueChanged, NumericUpDown1.ValueChanged, MyBase.Load, NumericUpDown3.ValueChanged, NumericUpDown12.ValueChanged, NumericUpDown11.ValueChanged
@@ -99,4 +101,217 @@ Public Class Form1
             MessageBox.Show("Exception")
         End Try
     End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim oWord As Word.Application
+        Dim oDoc As Word.Document
+        Dim oTable As Word.Table
+        Dim oPara1, oPara2, oPara3 As Word.Paragraph
+
+        'Start Word and open the document template. 
+        oWord = CreateObject("Word.Application")
+        oWord.Visible = True
+        oDoc = oWord.Documents.Add
+
+
+        'Insert a paragraph at the beginning of the document. 
+        oPara1 = oDoc.Content.Paragraphs.Add
+        oPara1.Range.Text = "VTK Engineering department"
+        oPara1.Range.Font.Name = "Arial"
+        oPara1.Range.Font.Size = 16
+        oPara1.Range.Font.Bold = True
+        oPara1.Format.SpaceAfter = 4                '24 pt spacing after paragraph. 
+        oPara1.Range.InsertParagraphAfter()
+
+        oPara2 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
+        oPara2.Range.Font.Size = 11
+        oPara2.Format.SpaceAfter = 2
+        oPara2.Range.Font.Bold = False
+        oPara2.Range.Text = "Berekening krimpen en persen van as en naaf" & vbCrLf
+        oPara2.Range.InsertParagraphAfter()
+
+        '----------------------------------------------
+        'Insert a table, fill it with data and change the column widths.
+        oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 4, 2)
+        oTable.Range.ParagraphFormat.SpaceAfter = 1
+        oTable.Range.Font.Size = 11
+        oTable.Range.Font.Bold = False
+        oTable.Rows.Item(1).Range.Font.Bold = True
+
+        oTable.Cell(1, 1).Range.Text = "Project Name"
+        oTable.Cell(1, 2).Range.Text = TextBox16.Text
+        oTable.Cell(2, 1).Range.Text = "Project number "
+        oTable.Cell(2, 2).Range.Text = TextBox17.Text
+        oTable.Cell(3, 1).Range.Text = "Author "
+        oTable.Cell(3, 2).Range.Text = Environment.UserName
+        oTable.Cell(4, 1).Range.Text = "Date "
+        oTable.Cell(4, 2).Range.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+
+        oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.5)   'Change width of columns 1 & 2.
+        oTable.Columns.Item(2).Width = oWord.InchesToPoints(2)
+        oTable.Rows.Item(1).Range.Font.Bold = True
+        oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
+
+        '----------------------------------------------
+        'Insert a 14 x 5 table, fill it with data and change the column widths.
+        oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 13, 3)
+        oTable.Range.ParagraphFormat.SpaceAfter = 1
+        oTable.Range.Font.Size = 10
+        oTable.Range.Font.Bold = False
+        oTable.Rows.Item(1).Range.Font.Bold = True
+
+        oTable.Cell(1, 1).Range.Text = "Input Data"
+        oTable.Cell(1, 2).Range.Text = ""
+        oTable.Cell(1, 3).Range.Text = ""
+
+        oTable.Cell(2, 1).Range.Text = "Diameter as (d_a)"
+        oTable.Cell(2, 2).Range.Text = NumericUpDown1.Value
+        oTable.Cell(2, 3).Range.Text = "[mm]"
+
+        oTable.Cell(3, 1).Range.Text = "Insteek lengte as (l)"
+        oTable.Cell(3, 2).Range.Text = NumericUpDown2.Value
+        oTable.Cell(3, 3).Range.Text = "[mm]"
+
+        oTable.Cell(4, 1).Range.Text = "Buiten diameter naaf (D)"
+        oTable.Cell(4, 2).Range.Text = NumericUpDown4.Value
+        oTable.Cell(4, 3).Range.Text = "[mm]"
+
+        oTable.Cell(5, 1).Range.Text = "Motor vermogen"
+        oTable.Cell(5, 2).Range.Text = NumericUpDown6.Value
+        oTable.Cell(5, 3).Range.Text = "[Kw]"
+
+
+        oTable.Cell(6, 1).Range.Text = "Toerental"
+        oTable.Cell(6, 2).Range.Text = NumericUpDown5.Value
+        oTable.Cell(6, 3).Range.Text = "[rpm]"
+
+
+        '---- -----
+        oTable.Cell(7, 1).Range.Text = "Bedrijfstoeslag factor"
+        oTable.Cell(7, 2).Range.Text = NumericUpDown7.Value
+        oTable.Cell(7, 3).Range.Text = "[-]"
+
+        oTable.Cell(8, 1).Range.Text = "Frictie coefficient"
+        oTable.Cell(8, 2).Range.Text = NumericUpDown3.Value
+        oTable.Cell(8, 3).Range.Text = "[-]"
+
+        oTable.Cell(9, 1).Range.Text = "E modulus"
+        oTable.Cell(9, 2).Range.Text = NumericUpDown8.Value
+        oTable.Cell(9, 3).Range.Text = "[N/mm2]"
+
+        '---- -----
+        oTable.Cell(10, 1).Range.Text = "Thermal expansion coefficient"
+        oTable.Cell(10, 2).Range.Text = NumericUpDown10.Value
+        oTable.Cell(10, 3).Range.Text = "[mm/mm.K]"
+
+        oTable.Cell(11, 1).Range.Text = "Opwarming"
+        oTable.Cell(11, 2).Range.Text = NumericUpDown9.Value
+        oTable.Cell(11, 3).Range.Text = "[C]"
+
+        oTable.Cell(12, 1).Range.Text = "Ruwheid as"
+        oTable.Cell(12, 2).Range.Text = NumericUpDown12.Value
+        oTable.Cell(12, 3).Range.Text = "[-]"
+
+        '---- --------
+        oTable.Cell(13, 1).Range.Text = "Ruwheid naaf"
+        oTable.Cell(13, 2).Range.Text = NumericUpDown11.Value
+        oTable.Cell(13, 3).Range.Text = "[-]"
+
+        oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
+        oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
+        oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
+
+
+        oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
+        'Insert a 14 x 5 table, fill it with data and change the column widths.
+        oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 12, 3)
+        oTable.Range.ParagraphFormat.SpaceAfter = 1
+        oTable.Range.Font.Size = 10
+        oTable.Range.Font.Bold = False
+        oTable.Rows.Item(1).Range.Font.Bold = True
+
+        oTable.Cell(1, 1).Range.Text = "Results"
+        oTable.Cell(1, 2).Range.Text = ""
+        oTable.Cell(1, 3).Range.Text = ""
+
+        oTable.Cell(2, 1).Range.Text = "Motor koppel"
+        oTable.Cell(2, 2).Range.Text = TextBox1.Text
+        oTable.Cell(2, 3).Range.Text = "[N.m]"
+
+        oTable.Cell(3, 1).Range.Text = "Vlaktedruk (p)"
+        oTable.Cell(3, 2).Range.Text = TextBox5.Text
+        oTable.Cell(3, 3).Range.Text = "[N/mm]"
+
+        oTable.Cell(4, 1).Range.Text = "Slipmoment"
+        oTable.Cell(4, 2).Range.Text = TextBox15.Text
+        oTable.Cell(4, 3).Range.Text = "[N.m]"
+
+        oTable.Cell(5, 1).Range.Text = "Trekspanning (sigma_t max)"
+        oTable.Cell(5, 2).Range.Text = TextBox7.Text
+        oTable.Cell(5, 3).Range.Text = "[N/mm]"
+
+        oTable.Cell(6, 1).Range.Text = "Radiale drukspanning (sigma_r max)"
+        oTable.Cell(6, 2).Range.Text = TextBox4.Text
+        oTable.Cell(6, 3).Range.Text = "[N/mm]"
+
+        oTable.Cell(7, 1).Range.Text = "Gecombineerde spanning (sigma_i max)"
+        oTable.Cell(7, 2).Range.Text = TextBox10.Text
+        oTable.Cell(7, 3).Range.Text = "[N/mm]"
+
+        oTable.Rows.Item(8).Range.Font.Bold = True
+
+        oTable.Cell(8, 1).Range.Text = "Pers of krimpmaat (koude maat)"
+        oTable.Cell(8, 2).Range.Text = ""
+        oTable.Cell(8, 3).Range.Text = ""
+
+        oTable.Cell(9, 1).Range.Text = "s/d verhouding"
+        oTable.Cell(9, 2).Range.Text = TextBox6.Text
+        oTable.Cell(9, 3).Range.Text = "[-]"
+
+        oTable.Cell(10, 1).Range.Text = "s maat "
+        oTable.Cell(10, 2).Range.Text = TextBox9.Text
+        oTable.Cell(10, 3).Range.Text = "[mu]"
+
+        oTable.Cell(11, 1).Range.Text = "Perskracht "
+        oTable.Cell(11, 2).Range.Text = TextBox11.Text
+        oTable.Cell(11, 3).Range.Text = "[ton]"
+
+        oTable.Rows.Item(11).Range.Font.Bold = True
+
+        oTable.Cell(11, 1).Range.Text = "Warme maat"
+        oTable.Cell(11, 2).Range.Text = ""
+        oTable.Cell(11, 3).Range.Text = ""
+
+        oTable.Cell(12, 1).Range.Text = "thermische uitzetting"
+        oTable.Cell(12, 2).Range.Text = TextBox2.Text
+        oTable.Cell(12, 3).Range.Text = "[mu]"
+
+        oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
+        oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
+        oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
+
+        '    Me.PictureBox1.Image = New System.Drawing.Bitmap("vervormingvanasennaaf.gif")
+
+        '    '    ' PictureBox1.Image = Image.FromFile("vervormingvanasennaaf.gif")
+
+        oPara3 = oDoc.Content.Paragraphs.Add
+        'oPara3.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
+        'Dim memstream As New MemoryStream
+        'Dim bitmap = New System.Drawing.Bitmap(memstream)
+        Try
+            With oPara3.Range.InlineShapes.AddPicture("PictureBox1.Image") '.ImageLocation)
+                .LockAspectRatio = True
+                .Width = 300
+            End With
+        Catch ex As Exception
+            '    'MessageBox.Show(ex.Message & "Line 1780")  ' Show the exception's message.
+        End Try
+    End Sub
+
+    'Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
+    '    PictureBox1.Image = My.Resources.vervormingvanasennaaf
+    'End Sub
+
+
+
 End Class
