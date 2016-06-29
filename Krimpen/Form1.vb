@@ -113,7 +113,6 @@ Public Class Form1
         oWord.Visible = True
         oDoc = oWord.Documents.Add
 
-
         'Insert a paragraph at the beginning of the document. 
         oPara1 = oDoc.Content.Paragraphs.Add
         oPara1.Range.Text = "VTK Engineering department"
@@ -282,7 +281,7 @@ Public Class Form1
         oTable.Cell(11, 2).Range.Text = ""
         oTable.Cell(11, 3).Range.Text = ""
 
-        oTable.Cell(12, 1).Range.Text = "thermische uitzetting"
+        oTable.Cell(12, 1).Range.Text = "Thermische uitzetting"
         oTable.Cell(12, 2).Range.Text = TextBox2.Text
         oTable.Cell(12, 3).Range.Text = "[mu]"
 
@@ -290,28 +289,21 @@ Public Class Form1
         oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
         oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
 
-        '    Me.PictureBox1.Image = New System.Drawing.Bitmap("vervormingvanasennaaf.gif")
-
-        '    '    ' PictureBox1.Image = Image.FromFile("vervormingvanasennaaf.gif")
+        ' save the image to c:\Temp
+        Dim FilePath As String = My.Computer.FileSystem.SpecialDirectories.MyPictures
+        If Me.PictureBox1.Image IsNot Nothing Then
+            Me.PictureBox1.Image.Save(IO.Path.Combine(FilePath, "TestFile.jpg"))
+        End If
 
         oPara3 = oDoc.Content.Paragraphs.Add
-        'oPara3.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft
-        'Dim memstream As New MemoryStream
-        'Dim bitmap = New System.Drawing.Bitmap(memstream)
         Try
-            With oPara3.Range.InlineShapes.AddPicture("PictureBox1.Image") '.ImageLocation)
+            With oPara3.Range.InlineShapes.AddPicture(FilePath & "\TestFile.jpg")
                 .LockAspectRatio = True
-                .Width = 300
+                .Width = 250
             End With
         Catch ex As Exception
-            '    'MessageBox.Show(ex.Message & "Line 1780")  ' Show the exception's message.
+            MessageBox.Show(ex.Message & "Could not LOad picture")  ' Show the exception's message.
         End Try
+
     End Sub
-
-    'Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
-    '    PictureBox1.Image = My.Resources.vervormingvanasennaaf
-    'End Sub
-
-
-
 End Class
