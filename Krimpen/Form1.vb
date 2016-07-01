@@ -304,6 +304,19 @@ Public Class Form1
         Catch ex As Exception
             MessageBox.Show(ex.Message & "Could not LOad picture")  ' Show the exception's message.
         End Try
+        IO.File.Delete(FilePath & "\TestFile.jpg")
+    End Sub
 
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click, TabPage3.Enter, NumericUpDown14.ValueChanged, NumericUpDown13.ValueChanged
+        Dim leng, exp_staal, exp_rvs, temp, exp_verschil As Double
+
+        leng = NumericUpDown14.Value
+        Double.TryParse(TextBox18.Text, exp_staal)
+        Double.TryParse(TextBox19.Text, exp_rvs)
+        temp = NumericUpDown13.Value
+
+        exp_verschil = temp * leng * (exp_rvs - exp_staal) * 1000
+        TextBox20.Text = Round(exp_verschil, 0).ToString
+        ' MessageBox.Show(exp_rvs.ToString)
     End Sub
 End Class
