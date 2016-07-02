@@ -6,13 +6,17 @@ Imports Word = Microsoft.Office.Interop.Word
 Imports System.Runtime.InteropServices
 
 Public Class Form1
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, NumericUpDown9.ValueChanged, NumericUpDown7.ValueChanged, NumericUpDown6.ValueChanged, NumericUpDown5.ValueChanged, NumericUpDown4.ValueChanged, NumericUpDown2.ValueChanged, NumericUpDown1.ValueChanged, MyBase.Load, NumericUpDown3.ValueChanged, NumericUpDown12.ValueChanged, NumericUpDown11.ValueChanged
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, NumericUpDown9.ValueChanged, NumericUpDown7.ValueChanged, NumericUpDown6.ValueChanged, NumericUpDown5.ValueChanged, NumericUpDown4.ValueChanged, NumericUpDown2.ValueChanged, NumericUpDown1.ValueChanged, MyBase.Load, NumericUpDown3.ValueChanged, NumericUpDown12.ValueChanged, NumericUpDown11.ValueChanged, NumericUpDown13.ValueChanged, NumericUpDown10.ValueChanged, RadioButton1.CheckedChanged
         Dim power, moment_motor, speed, factor As Double
         Dim OD_as, OD_naaf, ID_naaf, ring_dikte As Double
         Dim lengte_as, Coeffie_slip, moment_slip, p_vlaktedruk, trekspanning_ring, combi_spanning As Double
         Dim Elast_mod, sd_verhouding, s_maat_mu As Double
-        Dim uitzetting, delta_temp, CoeffI_term As Double
-        Dim F_pers, S_verlies As Double
+        Dim Therm_uitzetting_rvs, Therm_uitzetting_staal, delta_temp As Double
+        Dim Coef_exp_staal, Coef_exp_rvs, Bedrijfs_temp, exp_verschil As Double
+        Dim F_pers, S_verlies, actual_hot_s, production_s As Double
+
+        Double.TryParse(TextBox18.Text, Coef_exp_staal)
+        Double.TryParse(TextBox19.Text, Coef_exp_rvs)
 
         power = NumericUpDown6.Value * 1000
         speed = NumericUpDown5.Value
@@ -27,7 +31,15 @@ Public Class Form1
         Elast_mod = NumericUpDown8.Value
 
         delta_temp = NumericUpDown9.Value
-        CoeffI_term = NumericUpDown10.Value
+        Bedrijfs_temp = NumericUpDown13.Value
+        production_s = NumericUpDown10.Value                'koude productie S maat
+
+        '--------------------------------
+        If RadioButton1.Checked = True Then
+            GroupBox11.Visible = True
+        Else
+            GroupBox11.Visible = False
+        End If
 
         '----------- rekenen -----------
         Try
@@ -43,11 +55,13 @@ Public Class Form1
 
             '----- s/d ---------------------
             sd_verhouding = 2 * p_vlaktedruk * OD_naaf ^ 2 / (Elast_mod * (OD_naaf ^ 2 - ID_naaf ^ 2))
+            s_maat_mu = sd_verhouding * OD_as * 1000    'Maat noodzakelijk voor het overbrengen Slip moment
 
 
-            '----- Uitzetting --
-            uitzetting = delta_temp * CoeffI_term * ID_naaf * 1000   '[mu]
-            s_maat_mu = sd_verhouding * OD_as * 1000
+            '----- Therm_uitzetting --
+            Therm_uitzetting_rvs = delta_temp * Coef_exp_rvs * ID_naaf * 1000           '[mu]
+            Therm_uitzetting_staal = delta_temp * Coef_exp_staal * ID_naaf * 1000       '[mu]
+
 
             '------ Gecombineerde spanning ------------------ 
             combi_spanning = Sqrt(trekspanning_ring ^ 2 + p_vlaktedruk ^ 2 + trekspanning_ring * p_vlaktedruk)
@@ -59,9 +73,18 @@ Public Class Form1
             '----- Oppervlakte ruwheid --------
             S_verlies = Round(1.2 * 4 * (NumericUpDown11.Value + NumericUpDown12.Value), 0)        '60% verlies 
 
+            '----- naaf rvs en as staal -----------------------
+            exp_verschil = Bedrijfs_temp * OD_as * (Coef_exp_rvs - Coef_exp_staal) * 1000
+
+
+            '----------------- actual_hot_s ----------------------
+            actual_hot_s = production_s - S_verlies - exp_verschil
+
+
             '----- Presenteren --------------
             TextBox1.Text = Round(moment_motor, 0).ToString
-            TextBox2.Text = Round(uitzetting, 0).ToString               'Thermische expansie
+            TextBox2.Text = Round(Therm_uitzetting_rvs, 0).ToString     'Thermische expansie naaf rvs
+            TextBox21.Text = Round(Therm_uitzetting_staal, 0).ToString  'Thermische expansie naaf staal
             TextBox3.Text = Round(ring_dikte, 1).ToString
             TextBox4.Text = Round(p_vlaktedruk, 1).ToString             'Radiale spanning = vlaktedruk
             TextBox5.Text = Round(p_vlaktedruk, 1).ToString             'Vlaktedruk as
@@ -73,7 +96,10 @@ Public Class Form1
 
             TextBox11.Text = Round(F_pers, 1).ToString                  'Perskracht [ton]
             TextBox14.Text = Round(S_verlies, 1).ToString               'Verlies door oppervlakte ruwheid [mu]
+            TextBox23.Text = Round(S_verlies, 1).ToString               'Verlies door oppervlakte ruwheid [mu]
             TextBox15.Text = Round(moment_slip, 0).ToString             'As begint te slippen [Nm]
+            TextBox20.Text = Round(exp_verschil, 0).ToString
+            TextBox24.Text = Round(actual_hot_s, 0).ToString            'As begint te slippen [Nm]
 
             If p_vlaktedruk < 90 Then           'Check vlakte druk
                 TextBox5.BackColor = Color.LightGreen
@@ -81,7 +107,7 @@ Public Class Form1
                 TextBox5.BackColor = Color.Red
             End If
 
-            If 1 / sd_verhouding > 750 Then     'Check krimpmaat
+            If 1 / sd_verhouding > 750 Then     'Check krimpmaat op over-stressed
                 TextBox6.BackColor = Color.LightGreen
                 TextBox8.BackColor = Color.LightGreen
                 TextBox9.BackColor = Color.LightGreen
@@ -90,6 +116,15 @@ Public Class Form1
                 TextBox8.BackColor = Color.Red
                 TextBox9.BackColor = Color.Red
             End If
+
+            If actual_hot_s > s_maat_mu Then     'Slip at operating temperatuur
+                TextBox24.BackColor = Color.LightGreen
+                Label37.Visible = False
+            Else
+                TextBox24.BackColor = Color.Red
+                Label37.Visible = True
+            End If
+
 
             If NumericUpDown1.Value < NumericUpDown4.Value - 20 Then      'Onmogelijke naaf dimensie
                 NumericUpDown4.BackColor = SystemColors.Window
@@ -184,7 +219,6 @@ Public Class Form1
         oTable.Cell(6, 2).Range.Text = NumericUpDown5.Value
         oTable.Cell(6, 3).Range.Text = "[rpm]"
 
-
         '---- -----
         oTable.Cell(7, 1).Range.Text = "Bedrijfstoeslag factor"
         oTable.Cell(7, 2).Range.Text = NumericUpDown7.Value
@@ -199,8 +233,8 @@ Public Class Form1
         oTable.Cell(9, 3).Range.Text = "[N/mm2]"
 
         '---- -----
-        oTable.Cell(10, 1).Range.Text = "Thermal expansion coefficient"
-        oTable.Cell(10, 2).Range.Text = NumericUpDown10.Value
+        oTable.Cell(10, 1).Range.Text = "Thermal expansion coefficient rvs"
+        oTable.Cell(10, 2).Range.Text = TextBox19.Text
         oTable.Cell(10, 3).Range.Text = "[mm/mm.K]"
 
         oTable.Cell(11, 1).Range.Text = "Opwarming"
@@ -281,7 +315,7 @@ Public Class Form1
         oTable.Cell(11, 2).Range.Text = ""
         oTable.Cell(11, 3).Range.Text = ""
 
-        oTable.Cell(12, 1).Range.Text = "Thermische uitzetting"
+        oTable.Cell(12, 1).Range.Text = "Thermische Therm_uitzetting_rvs"
         oTable.Cell(12, 2).Range.Text = TextBox2.Text
         oTable.Cell(12, 3).Range.Text = "[mu]"
 
@@ -307,16 +341,7 @@ Public Class Form1
         IO.File.Delete(FilePath & "\TestFile.jpg")
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click, TabPage3.Enter, NumericUpDown14.ValueChanged, NumericUpDown13.ValueChanged
-        Dim leng, exp_staal, exp_rvs, temp, exp_verschil As Double
+    Private Sub GroupBox8_Enter(sender As Object, e As EventArgs) Handles GroupBox8.Enter
 
-        leng = NumericUpDown14.Value
-        Double.TryParse(TextBox18.Text, exp_staal)
-        Double.TryParse(TextBox19.Text, exp_rvs)
-        temp = NumericUpDown13.Value
-
-        exp_verschil = temp * leng * (exp_rvs - exp_staal) * 1000
-        TextBox20.Text = Round(exp_verschil, 0).ToString
-        ' MessageBox.Show(exp_rvs.ToString)
     End Sub
 End Class
