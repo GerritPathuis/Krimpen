@@ -86,7 +86,7 @@ Public Class Form1
             TextBox2.Text = Round(Therm_uitzetting_rvs, 0).ToString     'Thermische expansie naaf rvs
             TextBox21.Text = Round(Therm_uitzetting_staal, 0).ToString  'Thermische expansie naaf staal
             TextBox3.Text = Round(ring_dikte, 1).ToString
-            TextBox4.Text = Round(p_vlaktedruk, 1).ToString             'Radiale spanning = vlaktedruk
+            TextBox4.Text = Round(p_vlaktedruk, 1).ToString             'Radiale spanning = vlaktedrukColor.Red
             TextBox5.Text = Round(p_vlaktedruk, 1).ToString             'Vlaktedruk as
             TextBox7.Text = Round(trekspanning_ring, 1).ToString        'Trekspanning ring
             TextBox6.Text = Round(sd_verhouding, 4).ToString            's/d 
@@ -119,9 +119,11 @@ Public Class Form1
 
             If actual_hot_s > s_maat_mu Then     'Slip at operating temperatuur
                 TextBox24.BackColor = Color.LightGreen
+                NumericUpDown13.BackColor = SystemColors.Window
                 Label37.Visible = False
             Else
                 TextBox24.BackColor = Color.Red
+                NumericUpDown13.BackColor = Color.Red
                 Label37.Visible = True
             End If
 
@@ -203,8 +205,6 @@ Public Class Form1
         oTable.Rows.Item(1).Range.Font.Bold = True
         row = 1
         oTable.Cell(row, 1).Range.Text = "Input Data"
-        oTable.Cell(row, 2).Range.Text = ""
-        oTable.Cell(row, 3).Range.Text = ""
         row += 1
         oTable.Cell(row, 1).Range.Text = "Diameter as (d_a)"
         oTable.Cell(row, 2).Range.Text = NumericUpDown1.Value
@@ -247,7 +247,7 @@ Public Class Form1
         oTable.Cell(row, 2).Range.Text = TextBox19.Text
         oTable.Cell(row, 3).Range.Text = "[mm/mm.K]"
         row += 1
-        oTable.Cell(row, 1).Range.Text = "Opwarming"
+        oTable.Cell(row, 1).Range.Text = "Opwarming tbv montage"
         oTable.Cell(row, 2).Range.Text = NumericUpDown9.Value
         oTable.Cell(row, 3).Range.Text = "[C]"
         row += 1
@@ -265,16 +265,14 @@ Public Class Form1
         oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
 
         oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
-        'Insert a 14 x 5 table, fill it with data and change the column widths.
-        oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 24, 3)
+        'Insert a 16 x 3 table, fill it with data and change the column widths.
+        oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 16, 3)
         oTable.Range.ParagraphFormat.SpaceAfter = 1
         oTable.Range.Font.Size = 10
         oTable.Range.Font.Bold = False
         oTable.Rows.Item(1).Range.Font.Bold = True
         row = 1
         oTable.Cell(row, 1).Range.Text = "Results"
-        oTable.Cell(row, 2).Range.Text = ""
-        oTable.Cell(row, 3).Range.Text = ""
         row += 1
         oTable.Cell(row, 1).Range.Text = "Motor koppel"
         oTable.Cell(row, 2).Range.Text = TextBox1.Text
@@ -300,14 +298,11 @@ Public Class Form1
         oTable.Cell(row, 2).Range.Text = TextBox10.Text
         oTable.Cell(row, 3).Range.Text = "[N/mm]"
         row += 2
-        oTable.Rows.Item(8).Range.Font.Bold = True
-
+        oTable.Rows.Item(row).Range.Font.Bold = True
         oTable.Cell(row, 1).Range.Text = "Pers of krimpmaat (koude maat)"
-        oTable.Cell(row, 2).Range.Text = ""
-        oTable.Cell(row, 3).Range.Text = ""
         row += 1
-        oTable.Cell(row, 1).Range.Text = "s/d verhouding"
-        oTable.Cell(row, 2).Range.Text = TextBox6.Text
+        oTable.Cell(row, 1).Range.Text = "d/s verhouding > 850"
+        oTable.Cell(row, 2).Range.Text = TextBox8.Text
         oTable.Cell(row, 3).Range.Text = "[-]"
         row += 1
         oTable.Cell(row, 1).Range.Text = "s maat "
@@ -320,8 +315,6 @@ Public Class Form1
         row += 2
         oTable.Rows.Item(row).Range.Font.Bold = True
         oTable.Cell(row, 1).Range.Text = "Warme maat"
-        oTable.Cell(row, 2).Range.Text = ""
-        oTable.Cell(row, 3).Range.Text = ""
         row += 1
         oTable.Cell(row, 1).Range.Text = "Thermische Therm_uitzetting_rvs"
         oTable.Cell(row, 2).Range.Text = TextBox2.Text
@@ -331,12 +324,21 @@ Public Class Form1
         oTable.Cell(row, 2).Range.Text = TextBox21.Text
         oTable.Cell(row, 3).Range.Text = "[mu]"
 
+        oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
+        oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
+        oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
+
         If RadioButton1.Checked = True Then
-            row += 2
+            oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
+            'Insert a 7 x 3 table, fill it with data and change the column widths.
+            oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 7, 3)
+            oTable.Range.ParagraphFormat.SpaceAfter = 1
+            oTable.Range.Font.Size = 10
+            oTable.Range.Font.Bold = False
+            oTable.Rows.Item(1).Range.Font.Bold = True
+            row = 1
             oTable.Rows.Item(row).Range.Font.Bold = True
             oTable.Cell(row, 1).Range.Text = "Samenvatting RVS naaf op stalen as"
-            oTable.Cell(row, 2).Range.Text = ""
-            oTable.Cell(row, 3).Range.Text = ""
             row += 1
             oTable.Cell(row, 1).Range.Text = "Bedrijfstemperatuur"
             oTable.Cell(row, 2).Range.Text = NumericUpDown13.Text.ToString
@@ -346,15 +348,15 @@ Public Class Form1
             oTable.Cell(row, 2).Range.Text = NumericUpDown10.Text.ToString
             oTable.Cell(row, 3).Range.Text = "[mu]"
             row += 1
-            oTable.Cell(row, 1).Range.Text = "Ra verlies"
+            oTable.Cell(row, 1).Range.Text = "Ra diameter verlies"
             oTable.Cell(row, 2).Range.Text = TextBox23.Text
             oTable.Cell(row, 3).Range.Text = "[mu]"
             row += 1
-            oTable.Cell(row, 1).Range.Text = "Verschil thermische expansie"
+            oTable.Cell(row, 1).Range.Text = "Bedrijfs thermische expansie verlies"
             oTable.Cell(row, 2).Range.Text = TextBox20.Text
             oTable.Cell(row, 3).Range.Text = "[mu]"
             row += 1
-            oTable.Cell(row, 1).Range.Text = "Warme bedrijfs S maat"
+            oTable.Cell(row, 1).Range.Text = "Resulterende warme bedrijfs S maat"
             oTable.Cell(row, 2).Range.Text = TextBox24.Text
             oTable.Cell(row, 3).Range.Text = "[mu]"
 
@@ -370,6 +372,8 @@ Public Class Form1
             End If
 
         End If
+
+
         oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
         oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
         oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
