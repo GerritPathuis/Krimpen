@@ -6,7 +6,28 @@ Imports Word = Microsoft.Office.Interop.Word
 Imports System.Runtime.InteropServices
 
 Public Class Form1
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, NumericUpDown9.ValueChanged, NumericUpDown7.ValueChanged, NumericUpDown6.ValueChanged, NumericUpDown5.ValueChanged, NumericUpDown4.ValueChanged, NumericUpDown2.ValueChanged, NumericUpDown1.ValueChanged, MyBase.Load, NumericUpDown3.ValueChanged, NumericUpDown12.ValueChanged, NumericUpDown11.ValueChanged, NumericUpDown13.ValueChanged, NumericUpDown10.ValueChanged, RadioButton1.CheckedChanged
+
+    Public Shared RA_surf() As String = {"  0.2", "  0.4", "  0.8", "  1.6", "  3.2", "  6.3", "  12.5", "  25"}
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Thread.CurrentThread.CurrentCulture = New CultureInfo("en-US")      'Decimal separator "."
+        Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")    'Decimal separator "."
+
+        '-------Fill combobox1, Surface with RA------------------
+        For hh = 0 To RA_surf.Length - 1               'Fill combobox 5 emotor data
+            ComboBox1.Items.Add(RA_surf(hh))
+            ComboBox2.Items.Add(RA_surf(hh))
+        Next hh
+        ComboBox1.SelectedIndex = 4         'Ra 3.2 voor krimp of persvlak
+        ComboBox2.SelectedIndex = 4         'Ra 3.2 voor krimp of persvlak
+        Calc()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, NumericUpDown9.ValueChanged, NumericUpDown7.ValueChanged, NumericUpDown6.ValueChanged, NumericUpDown5.ValueChanged, NumericUpDown4.ValueChanged, NumericUpDown2.ValueChanged, NumericUpDown1.ValueChanged, NumericUpDown3.ValueChanged, NumericUpDown13.ValueChanged, NumericUpDown10.ValueChanged, RadioButton1.CheckedChanged, ComboBox2.SelectedIndexChanged, ComboBox1.SelectedIndexChanged
+        Calc()
+    End Sub
+
+    Private Sub Calc()
         Dim power, moment_motor, speed, factor As Double
         Dim OD_as, OD_naaf, ID_naaf, ring_dikte As Double
         Dim lengte_as, Coeffie_slip, moment_slip, p_vlaktedruk, trekspanning_ring, combi_spanning As Double
@@ -14,9 +35,12 @@ Public Class Form1
         Dim Therm_uitzetting_rvs, Therm_uitzetting_staal, delta_temp As Double
         Dim Coef_exp_staal, Coef_exp_rvs, Bedrijfs_temp, exp_verschil As Double
         Dim F_pers, S_verlies, actual_hot_s, production_s As Double
+        Dim ra1, ra2 As Double
 
         Double.TryParse(TextBox18.Text, Coef_exp_staal)
         Double.TryParse(TextBox19.Text, Coef_exp_rvs)
+        Double.TryParse(ComboBox1.SelectedItem, ra1)
+        Double.TryParse(ComboBox2.SelectedItem, ra2)
 
         power = NumericUpDown6.Value * 1000
         speed = NumericUpDown5.Value
@@ -49,7 +73,6 @@ Public Class Form1
             p_vlaktedruk = 2 * moment_motor * 1000 / (PI * OD_as ^ 2 * lengte_as * Coeffie_slip)    '[N/mm]
             moment_slip = p_vlaktedruk * PI * OD_as * lengte_as * Coeffie_slip * 0.5 * OD_as / 1000 '[N.m]
 
-
             '----- ring ---------------------
             trekspanning_ring = p_vlaktedruk * (OD_naaf ^ 2 + ID_naaf ^ 2) / (OD_naaf ^ 2 - ID_naaf ^ 2)
 
@@ -57,11 +80,9 @@ Public Class Form1
             sd_verhouding = 2 * p_vlaktedruk * OD_naaf ^ 2 / (Elast_mod * (OD_naaf ^ 2 - ID_naaf ^ 2))
             s_maat_mu = sd_verhouding * OD_as * 1000    'Maat noodzakelijk voor het overbrengen Slip moment
 
-
             '----- Therm_uitzetting --
             Therm_uitzetting_rvs = delta_temp * Coef_exp_rvs * ID_naaf * 1000           '[mu]
             Therm_uitzetting_staal = delta_temp * Coef_exp_staal * ID_naaf * 1000       '[mu]
-
 
             '------ Gecombineerde spanning ------------------ 
             combi_spanning = Sqrt(trekspanning_ring ^ 2 + p_vlaktedruk ^ 2 + trekspanning_ring * p_vlaktedruk)
@@ -71,15 +92,13 @@ Public Class Form1
             F_pers /= 10000                                                 '[N-> ton
 
             '----- Oppervlakte ruwheid --------
-            S_verlies = Round(1.2 * 4 * (NumericUpDown11.Value + NumericUpDown12.Value), 0)        '60% verlies 
+            S_verlies = Round(1.2 * (ra1 + ra2), 0)        '60% verlies 
 
             '----- naaf rvs en as staal -----------------------
             exp_verschil = Bedrijfs_temp * OD_as * (Coef_exp_rvs - Coef_exp_staal) * 1000
 
-
             '----------------- actual_hot_s ----------------------
             actual_hot_s = production_s - S_verlies - exp_verschil
-
 
             '----- Presenteren --------------
             TextBox1.Text = Round(moment_motor, 0).ToString
@@ -143,10 +162,12 @@ Public Class Form1
         Dim oDoc As Word.Document
         Dim oTable As Word.Table
         Dim oPara1, oPara2, oPara3 As Word.Paragraph
-        Dim row As Integer
+        Dim row, font_sizze As Integer
         Dim ss_hot, ss_slip As Double
 
+
         'Start Word and open the document template. 
+        font_sizze = 9
         oWord = CreateObject("Word.Application")
         oWord.Visible = True
         oDoc = oWord.Documents.Add
@@ -155,13 +176,13 @@ Public Class Form1
         oPara1 = oDoc.Content.Paragraphs.Add
         oPara1.Range.Text = "VTK Engineering"
         oPara1.Range.Font.Name = "Arial"
-        oPara1.Range.Font.Size = 14
+        oPara1.Range.Font.Size = font_sizze + 2
         oPara1.Range.Font.Bold = True
         oPara1.Format.SpaceAfter = 1                '24 pt spacing after paragraph. 
         oPara1.Range.InsertParagraphAfter()
 
         oPara2 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
-        oPara2.Range.Font.Size = 10
+        oPara2.Range.Font.Size = font_sizze
         oPara2.Format.SpaceAfter = 1
         oPara2.Range.Font.Bold = False
         oPara2.Range.Text = "Berekening krimpen en persen van as en naaf" & vbCrLf
@@ -171,7 +192,7 @@ Public Class Form1
         'Insert a table, fill it with data and change the column widths.
         oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 5, 2)
         oTable.Range.ParagraphFormat.SpaceAfter = 1
-        oTable.Range.Font.Size = 10
+        oTable.Range.Font.Size = font_sizze
         oTable.Range.Font.Bold = False
         oTable.Rows.Item(1).Range.Font.Bold = True
 
@@ -200,7 +221,7 @@ Public Class Form1
         'Insert a 14 x 5 table, fill it with data and change the column widths.
         oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 13, 3)
         oTable.Range.ParagraphFormat.SpaceAfter = 1
-        oTable.Range.Font.Size = 10
+        oTable.Range.Font.Size = font_sizze
         oTable.Range.Font.Bold = False
         oTable.Rows.Item(1).Range.Font.Bold = True
         row = 1
@@ -252,12 +273,12 @@ Public Class Form1
         oTable.Cell(row, 3).Range.Text = "[C]"
         row += 1
         oTable.Cell(row, 1).Range.Text = "Ruwheid as"
-        oTable.Cell(row, 2).Range.Text = NumericUpDown12.Value
+        oTable.Cell(row, 2).Range.Text = ComboBox1.SelectedText
         oTable.Cell(row, 3).Range.Text = "[-]"
         row += 1
         '---- --------
         oTable.Cell(row, 1).Range.Text = "Ruwheid naaf"
-        oTable.Cell(row, 2).Range.Text = NumericUpDown11.Value
+        oTable.Cell(row, 2).Range.Text = ComboBox2.SelectedText
         oTable.Cell(row, 3).Range.Text = "[-]"
 
         oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
@@ -268,7 +289,7 @@ Public Class Form1
         'Insert a 16 x 3 table, fill it with data and change the column widths.
         oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 16, 3)
         oTable.Range.ParagraphFormat.SpaceAfter = 1
-        oTable.Range.Font.Size = 10
+        oTable.Range.Font.Size = font_sizze
         oTable.Range.Font.Bold = False
         oTable.Rows.Item(1).Range.Font.Bold = True
         row = 1
@@ -333,7 +354,7 @@ Public Class Form1
             'Insert a 7 x 3 table, fill it with data and change the column widths.
             oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 7, 3)
             oTable.Range.ParagraphFormat.SpaceAfter = 1
-            oTable.Range.Font.Size = 10
+            oTable.Range.Font.Size = font_sizze
             oTable.Range.Font.Bold = False
             oTable.Rows.Item(1).Range.Font.Bold = True
             row = 1
@@ -373,7 +394,6 @@ Public Class Form1
 
         End If
 
-
         oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
         oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
         oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
@@ -396,7 +416,5 @@ Public Class Form1
         IO.File.Delete(FilePath & "\TestFile.jpg")
     End Sub
 
-    Private Sub GroupBox8_Enter(sender As Object, e As EventArgs) Handles GroupBox8.Enter
 
-    End Sub
 End Class
