@@ -55,7 +55,7 @@ Public Class Form1
         Elast_mod = NumericUpDown8.Value
 
         delta_temp = NumericUpDown9.Value
-        Bedrijfs_temp = NumericUpDown13.Value
+        Bedrijfs_temp = NumericUpDown13.Value - NumericUpDown11.Value
         production_s = NumericUpDown10.Value                'koude productie S maat
 
         '--------------------------------
