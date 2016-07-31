@@ -416,5 +416,34 @@ Public Class Form1
         IO.File.Delete(FilePath & "\TestFile.jpg")
     End Sub
 
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click, RadioButton3.CheckedChanged, NumericUpDown18.ValueChanged, NumericUpDown17.ValueChanged, NumericUpDown16.ValueChanged, NumericUpDown15.ValueChanged, NumericUpDown14.ValueChanged, NumericUpDown12.ValueChanged, TabPage3.Enter
+        Dim L1, uitz1, Delta1 As Double
+        Dim L2, uitz2, Delta2 As Double
+        Dim L3, uitz3, Delta3 As Double
+        Dim expansie_coef, uitz_tot As Double
 
+        If RadioButton3.Checked Then        'Staal
+            Double.TryParse(TextBox28.Text, expansie_coef)
+        Else
+            Double.TryParse(TextBox27.Text, expansie_coef)
+        End If
+
+        L1 = NumericUpDown12.Value
+        L2 = NumericUpDown15.Value
+        L3 = NumericUpDown17.Value
+
+        Delta1 = NumericUpDown14.Value
+        Delta2 = NumericUpDown16.Value
+        Delta3 = NumericUpDown18.Value
+
+        uitz1 = L1 * Delta1 * expansie_coef
+        uitz2 = L2 * Delta2 * expansie_coef
+        uitz3 = L3 * Delta3 * expansie_coef
+        uitz_tot = uitz1 + uitz2 + uitz3
+
+        TextBox29.Text = uitz1.ToString
+        TextBox30.Text = uitz2.ToString
+        TextBox31.Text = uitz3.ToString
+        TextBox32.Text = uitz_tot.ToString
+    End Sub
 End Class
