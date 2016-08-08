@@ -164,7 +164,7 @@ Public Class Form1
         Dim oPara1, oPara2, oPara3 As Word.Paragraph
         Dim row, font_sizze As Integer
         Dim ss_hot, ss_slip As Double
-
+        Dim ufilename As String
 
         'Start Word and open the document template. 
         font_sizze = 9
@@ -411,9 +411,24 @@ Public Class Form1
                 .Width = 250
             End With
         Catch ex As Exception
-            MessageBox.Show(ex.Message & "Could not LOad picture")  ' Show the exception's message.
+            MessageBox.Show(ex.Message & "Could not Load picture")  ' Show the exception's message.
         End Try
         IO.File.Delete(FilePath & "\TestFile.jpg")
+
+        Try
+            ufilename = "C:\temp\" & DateTime.Now.ToString("yyyy_MM_dd__HH_mm_ss") & "_Naaf_krimp.docx"
+            MessageBox.Show("File saved at " & ufilename)
+            oDoc.SaveAs(ufilename)
+            oDoc.Close()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)  ' Show the exception's message.
+        Finally
+            'quit Word
+            If Not IsNothing(oWord) Then
+                oWord.Quit()
+                oWord = Nothing
+            End If
+        End Try
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click, RadioButton3.CheckedChanged, NumericUpDown18.ValueChanged, NumericUpDown17.ValueChanged, NumericUpDown16.ValueChanged, NumericUpDown15.ValueChanged, NumericUpDown14.ValueChanged, NumericUpDown12.ValueChanged, TabPage3.Enter
