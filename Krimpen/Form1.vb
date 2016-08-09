@@ -416,18 +416,18 @@ Public Class Form1
         IO.File.Delete(FilePath & "\TestFile.jpg")
 
         Try
-            ufilename = "C:\temp\" & DateTime.Now.ToString("yyyy_MM_dd__HH_mm_ss") & "_Naaf_krimp.docx"
-            MessageBox.Show("File saved at " & ufilename)
-            oDoc.SaveAs(ufilename)
-            oDoc.Close()
+            'ufilename = "C:\temp\" & DateTime.Now.ToString("yyyy_MM_dd__HH_mm_ss") & "_Naaf_krimp.docx"
+            'MessageBox.Show("File saved at " & ufilename)
+            'oDoc.SaveAs(ufilename)
+            'oDoc.Close()
         Catch ex As Exception
             MessageBox.Show(ex.Message)  ' Show the exception's message.
         Finally
-            'quit Word
-            If Not IsNothing(oWord) Then
-                oWord.Quit()
-                oWord = Nothing
-            End If
+            ''quit Word
+            'If Not IsNothing(oWord) Then
+            '    oWord.Quit()
+            '    oWord = Nothing
+            'End If
         End Try
     End Sub
 
