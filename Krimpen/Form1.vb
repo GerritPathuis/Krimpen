@@ -18,8 +18,8 @@ Public Class Form1
             ComboBox1.Items.Add(RA_surf(hh))
             ComboBox2.Items.Add(RA_surf(hh))
         Next hh
-        ComboBox1.SelectedIndex = 4         'Ra 3.2 voor krimp of persvlak
-        ComboBox2.SelectedIndex = 4         'Ra 3.2 voor krimp of persvlak
+        ComboBox1.SelectedIndex = 2         'Ra 0.8 voor krimp of persvlak
+        ComboBox2.SelectedIndex = 2         'Ra 0.8 voor krimp of persvlak
         Calc()
     End Sub
 
@@ -273,19 +273,19 @@ Public Class Form1
         oTable.Cell(row, 3).Range.Text = "[C]"
         row += 1
         oTable.Cell(row, 1).Range.Text = "Ruwheid as"
-        oTable.Cell(row, 2).Range.Text = ComboBox1.SelectedText
-        oTable.Cell(row, 3).Range.Text = "[-]"
+        oTable.Cell(row, 2).Range.Text = ComboBox1.SelectedItem
+        oTable.Cell(row, 3).Range.Text = "[mu]"
         row += 1
         '---- --------
         oTable.Cell(row, 1).Range.Text = "Ruwheid naaf"
-        oTable.Cell(row, 2).Range.Text = ComboBox2.SelectedText
-        oTable.Cell(row, 3).Range.Text = "[-]"
+        oTable.Cell(row, 2).Range.Text = ComboBox2.SelectedItem
+        oTable.Cell(row, 3).Range.Text = "[mu]"
 
         oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
         oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
         oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
-
         oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
+
         'Insert a 16 x 3 table, fill it with data and change the column widths.
         oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 16, 3)
         oTable.Range.ParagraphFormat.SpaceAfter = 1
@@ -348,9 +348,9 @@ Public Class Form1
         oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
         oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
         oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
+        oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
 
         If RadioButton1.Checked = True Then
-            oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
             'Insert a 7 x 3 table, fill it with data and change the column widths.
             oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 7, 3)
             oTable.Range.ParagraphFormat.SpaceAfter = 1
@@ -391,12 +391,12 @@ Public Class Form1
             Else
                 oTable.Cell(row, 1).Range.Text = "Naaf zit vast !!"
             End If
-
+            oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
+            oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
+            oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
+            oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
         End If
 
-        oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
-        oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
-        oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
 
         ' save the image to c:\Temp
         Dim FilePath As String = My.Computer.FileSystem.SpecialDirectories.MyPictures
@@ -416,18 +416,10 @@ Public Class Form1
         IO.File.Delete(FilePath & "\TestFile.jpg")
 
         Try
-            'ufilename = "C:\temp\" & DateTime.Now.ToString("yyyy_MM_dd__HH_mm_ss") & "_Naaf_krimp.docx"
-            'MessageBox.Show("File saved at " & ufilename)
-            'oDoc.SaveAs(ufilename)
-            'oDoc.Close()
+            ufilename = "C:\temp\Naaf_krimp_" & DateTime.Now.ToString("yyyy_MM_dd__HH_mm_ss") & ".docx"
+            oDoc.SaveAs(ufilename)
         Catch ex As Exception
             MessageBox.Show(ex.Message)  ' Show the exception's message.
-        Finally
-            ''quit Word
-            'If Not IsNothing(oWord) Then
-            '    oWord.Quit()
-            '    oWord = Nothing
-            'End If
         End Try
     End Sub
 

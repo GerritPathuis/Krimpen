@@ -162,6 +162,7 @@ Partial Class Form1
         Me.Label53 = New System.Windows.Forms.Label()
         Me.TextBox27 = New System.Windows.Forms.TextBox()
         Me.TextBox28 = New System.Windows.Forms.TextBox()
+        Me.Label64 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox11.SuspendLayout()
@@ -214,6 +215,7 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Label64)
         Me.TabPage1.Controls.Add(Me.Label37)
         Me.TabPage1.Controls.Add(Me.GroupBox11)
         Me.TabPage1.Controls.Add(Me.GroupBox10)
@@ -263,9 +265,9 @@ Partial Class Form1
         Me.GroupBox11.Controls.Add(Me.NumericUpDown13)
         Me.GroupBox11.Controls.Add(Me.TextBox20)
         Me.GroupBox11.Controls.Add(Me.Label44)
-        Me.GroupBox11.Location = New System.Drawing.Point(731, 281)
+        Me.GroupBox11.Location = New System.Drawing.Point(731, 266)
         Me.GroupBox11.Name = "GroupBox11"
-        Me.GroupBox11.Size = New System.Drawing.Size(351, 216)
+        Me.GroupBox11.Size = New System.Drawing.Size(351, 202)
         Me.GroupBox11.TabIndex = 17
         Me.GroupBox11.TabStop = False
         Me.GroupBox11.Text = "Samenvatting; As van staal en Naaf van RVS"
@@ -986,7 +988,7 @@ Partial Class Form1
         Me.GroupBox4.Controls.Add(Me.Label13)
         Me.GroupBox4.Controls.Add(Me.NumericUpDown9)
         Me.GroupBox4.Controls.Add(Me.Label24)
-        Me.GroupBox4.Location = New System.Drawing.Point(731, 144)
+        Me.GroupBox4.Location = New System.Drawing.Point(731, 129)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(351, 126)
         Me.GroupBox4.TabIndex = 6
@@ -1110,7 +1112,7 @@ Partial Class Form1
         Me.NumericUpDown7.Size = New System.Drawing.Size(81, 24)
         Me.NumericUpDown7.TabIndex = 6
         Me.NumericUpDown7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.NumericUpDown7.Value = New Decimal(New Integer() {2, 0, 0, 0})
+        Me.NumericUpDown7.Value = New Decimal(New Integer() {4, 0, 0, 0})
         '
         'Label3
         '
@@ -1134,6 +1136,7 @@ Partial Class Form1
         '
         'NumericUpDown5
         '
+        Me.NumericUpDown5.BackColor = System.Drawing.Color.Yellow
         Me.NumericUpDown5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumericUpDown5.Location = New System.Drawing.Point(193, 46)
         Me.NumericUpDown5.Maximum = New Decimal(New Integer() {3500, 0, 0, 0})
@@ -1165,6 +1168,7 @@ Partial Class Form1
         '
         'NumericUpDown6
         '
+        Me.NumericUpDown6.BackColor = System.Drawing.Color.Yellow
         Me.NumericUpDown6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumericUpDown6.Location = New System.Drawing.Point(193, 16)
         Me.NumericUpDown6.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
@@ -1195,9 +1199,9 @@ Partial Class Form1
         Me.RadioButton2.AutoSize = True
         Me.RadioButton2.Location = New System.Drawing.Point(160, 84)
         Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(123, 17)
+        Me.RadioButton2.Size = New System.Drawing.Size(154, 17)
         Me.RadioButton2.TabIndex = 13
-        Me.RadioButton2.Text = "Naaf en As zijn Staal"
+        Me.RadioButton2.Text = "Naaf en As zelfde materiaal"
         Me.RadioButton2.UseVisualStyleBackColor = True
         '
         'RadioButton1
@@ -1254,6 +1258,7 @@ Partial Class Form1
         '
         'NumericUpDown4
         '
+        Me.NumericUpDown4.BackColor = System.Drawing.Color.Yellow
         Me.NumericUpDown4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumericUpDown4.Location = New System.Drawing.Point(193, 21)
         Me.NumericUpDown4.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
@@ -1300,6 +1305,7 @@ Partial Class Form1
         '
         'NumericUpDown2
         '
+        Me.NumericUpDown2.BackColor = System.Drawing.Color.Yellow
         Me.NumericUpDown2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumericUpDown2.Location = New System.Drawing.Point(193, 52)
         Me.NumericUpDown2.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
@@ -1331,6 +1337,7 @@ Partial Class Form1
         '
         'NumericUpDown1
         '
+        Me.NumericUpDown1.BackColor = System.Drawing.Color.Yellow
         Me.NumericUpDown1.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumericUpDown1.Location = New System.Drawing.Point(193, 22)
         Me.NumericUpDown1.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
@@ -1749,6 +1756,16 @@ Partial Class Form1
         Me.TextBox28.Text = "12E-6"
         Me.TextBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'Label64
+        '
+        Me.Label64.AutoSize = True
+        Me.Label64.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label64.Location = New System.Drawing.Point(732, 471)
+        Me.Label64.Name = "Label64"
+        Me.Label64.Size = New System.Drawing.Size(358, 15)
+        Me.Label64.TabIndex = 19
+        Me.Label64.Text = "http://www.amesweb.info/FitTolerance/PreferredTolerances.aspx"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1757,7 +1774,7 @@ Partial Class Form1
         Me.Controls.Add(Me.TabControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
-        Me.Text = "Persen en Krimpen"
+        Me.Text = "Persen en Krimpen 22-09-2016"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
@@ -1952,4 +1969,5 @@ Partial Class Form1
     Friend WithEvents Label53 As Label
     Friend WithEvents TextBox27 As TextBox
     Friend WithEvents TextBox28 As TextBox
+    Friend WithEvents Label64 As Label
 End Class
