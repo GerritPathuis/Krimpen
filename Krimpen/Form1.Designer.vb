@@ -25,6 +25,7 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Label64 = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
         Me.GroupBox11 = New System.Windows.Forms.GroupBox()
         Me.Label50 = New System.Windows.Forms.Label()
@@ -162,7 +163,6 @@ Partial Class Form1
         Me.Label53 = New System.Windows.Forms.Label()
         Me.TextBox27 = New System.Windows.Forms.TextBox()
         Me.TextBox28 = New System.Windows.Forms.TextBox()
-        Me.Label64 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox11.SuspendLayout()
@@ -216,7 +216,6 @@ Partial Class Form1
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.Label64)
-        Me.TabPage1.Controls.Add(Me.Label37)
         Me.TabPage1.Controls.Add(Me.GroupBox11)
         Me.TabPage1.Controls.Add(Me.GroupBox10)
         Me.TabPage1.Controls.Add(Me.Button2)
@@ -238,19 +237,30 @@ Partial Class Form1
         Me.TabPage1.Text = "Rekenen"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'Label64
+        '
+        Me.Label64.AutoSize = True
+        Me.Label64.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label64.Location = New System.Drawing.Point(731, 481)
+        Me.Label64.Name = "Label64"
+        Me.Label64.Size = New System.Drawing.Size(358, 15)
+        Me.Label64.TabIndex = 19
+        Me.Label64.Text = "http://www.amesweb.info/FitTolerance/PreferredTolerances.aspx"
+        '
         'Label37
         '
         Me.Label37.AutoSize = True
-        Me.Label37.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label37.Location = New System.Drawing.Point(618, 511)
+        Me.Label37.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label37.Location = New System.Drawing.Point(13, 200)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(472, 16)
+        Me.Label37.Size = New System.Drawing.Size(335, 13)
         Me.Label37.TabIndex = 18
-        Me.Label37.Text = "Bij deze bedrijfsomstandigheden gaat een RVS naaf los zitten op de stalen as."
+        Me.Label37.Text = "Bij deze bedrijfsomstandigheden zir een RVS naaf los op de stalen as."
         '
         'GroupBox11
         '
         Me.GroupBox11.Controls.Add(Me.Label50)
+        Me.GroupBox11.Controls.Add(Me.Label37)
         Me.GroupBox11.Controls.Add(Me.NumericUpDown11)
         Me.GroupBox11.Controls.Add(Me.Label48)
         Me.GroupBox11.Controls.Add(Me.Label47)
@@ -265,9 +275,9 @@ Partial Class Form1
         Me.GroupBox11.Controls.Add(Me.NumericUpDown13)
         Me.GroupBox11.Controls.Add(Me.TextBox20)
         Me.GroupBox11.Controls.Add(Me.Label44)
-        Me.GroupBox11.Location = New System.Drawing.Point(731, 266)
+        Me.GroupBox11.Location = New System.Drawing.Point(731, 262)
         Me.GroupBox11.Name = "GroupBox11"
-        Me.GroupBox11.Size = New System.Drawing.Size(351, 202)
+        Me.GroupBox11.Size = New System.Drawing.Size(351, 221)
         Me.GroupBox11.TabIndex = 17
         Me.GroupBox11.TabStop = False
         Me.GroupBox11.Text = "Samenvatting; As van staal en Naaf van RVS"
@@ -988,7 +998,7 @@ Partial Class Form1
         Me.GroupBox4.Controls.Add(Me.Label13)
         Me.GroupBox4.Controls.Add(Me.NumericUpDown9)
         Me.GroupBox4.Controls.Add(Me.Label24)
-        Me.GroupBox4.Location = New System.Drawing.Point(731, 129)
+        Me.GroupBox4.Location = New System.Drawing.Point(731, 126)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(351, 126)
         Me.GroupBox4.TabIndex = 6
@@ -1755,16 +1765,6 @@ Partial Class Form1
         Me.TextBox28.TabIndex = 6
         Me.TextBox28.Text = "12E-6"
         Me.TextBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label64
-        '
-        Me.Label64.AutoSize = True
-        Me.Label64.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label64.Location = New System.Drawing.Point(732, 471)
-        Me.Label64.Name = "Label64"
-        Me.Label64.Size = New System.Drawing.Size(358, 15)
-        Me.Label64.TabIndex = 19
-        Me.Label64.Text = "http://www.amesweb.info/FitTolerance/PreferredTolerances.aspx"
         '
         'Form1
         '

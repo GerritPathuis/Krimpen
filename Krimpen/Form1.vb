@@ -20,6 +20,16 @@ Public Class Form1
         Next hh
         ComboBox1.SelectedIndex = 2         'Ra 0.8 voor krimp of persvlak
         ComboBox2.SelectedIndex = 2         'Ra 0.8 voor krimp of persvlak
+
+        TextBox26.Text =
+        "Persvlakken" & vbTab & "Ra 0.8 tot 1.6" & vbCrLf &
+        "Boren" & vbTab & vbTab & "Ra 3.2 tot 6.3" & vbCrLf &
+        "Kotteren" & vbTab & vbTab & "Ra 1.6 tot 3.2" & vbCrLf &
+        "Draaien" & vbTab & vbTab & "Ra 1.6 tot 6.3" & vbCrLf &
+        "Slijpen" & vbTab & vbTab & "Ra 0.4 tot 3.2" & vbCrLf &
+        "Borstelen" & vbTab & vbTab & "Ra 0.4" & vbCrLf &
+        "Honen" & vbTab & vbTab & "Ra 0.1 tot 0.4"
+
         Calc()
     End Sub
 
