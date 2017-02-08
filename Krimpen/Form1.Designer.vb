@@ -159,12 +159,7 @@ Partial Class Form1
         Me.Label54 = New System.Windows.Forms.Label()
         Me.Label52 = New System.Windows.Forms.Label()
         Me.GroupBox12 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton4 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-        Me.Label51 = New System.Windows.Forms.Label()
         Me.Label53 = New System.Windows.Forms.Label()
-        Me.TextBox27 = New System.Windows.Forms.TextBox()
-        Me.TextBox28 = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox11.SuspendLayout()
@@ -1429,8 +1424,6 @@ Partial Class Form1
         '
         'TabPage3
         '
-        Me.TabPage3.Controls.Add(Me.TextBox33)
-        Me.TabPage3.Controls.Add(Me.ComboBox3)
         Me.TabPage3.Controls.Add(Me.Button3)
         Me.TabPage3.Controls.Add(Me.GroupBox13)
         Me.TabPage3.Controls.Add(Me.GroupBox12)
@@ -1444,18 +1437,20 @@ Partial Class Form1
         '
         'TextBox33
         '
-        Me.TextBox33.Location = New System.Drawing.Point(847, 62)
+        Me.TextBox33.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox33.Location = New System.Drawing.Point(163, 54)
         Me.TextBox33.Name = "TextBox33"
-        Me.TextBox33.Size = New System.Drawing.Size(167, 20)
+        Me.TextBox33.Size = New System.Drawing.Size(90, 22)
         Me.TextBox33.TabIndex = 16
         Me.TextBox33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ComboBox3
         '
+        Me.ComboBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(506, 62)
+        Me.ComboBox3.Location = New System.Drawing.Point(9, 24)
         Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(306, 21)
+        Me.ComboBox3.Size = New System.Drawing.Size(334, 24)
         Me.ComboBox3.TabIndex = 15
         '
         'Button3
@@ -1709,82 +1704,25 @@ Partial Class Form1
         '
         'GroupBox12
         '
-        Me.GroupBox12.Controls.Add(Me.RadioButton4)
-        Me.GroupBox12.Controls.Add(Me.RadioButton3)
-        Me.GroupBox12.Controls.Add(Me.Label51)
+        Me.GroupBox12.Controls.Add(Me.TextBox33)
         Me.GroupBox12.Controls.Add(Me.Label53)
-        Me.GroupBox12.Controls.Add(Me.TextBox27)
-        Me.GroupBox12.Controls.Add(Me.TextBox28)
+        Me.GroupBox12.Controls.Add(Me.ComboBox3)
         Me.GroupBox12.Location = New System.Drawing.Point(29, 30)
         Me.GroupBox12.Name = "GroupBox12"
-        Me.GroupBox12.Size = New System.Drawing.Size(327, 129)
+        Me.GroupBox12.Size = New System.Drawing.Size(349, 97)
         Me.GroupBox12.TabIndex = 12
         Me.GroupBox12.TabStop = False
         Me.GroupBox12.Text = "Algemeen"
-        '
-        'RadioButton4
-        '
-        Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.Location = New System.Drawing.Point(125, 100)
-        Me.RadioButton4.Name = "RadioButton4"
-        Me.RadioButton4.Size = New System.Drawing.Size(44, 17)
-        Me.RadioButton4.TabIndex = 15
-        Me.RadioButton4.Text = "Rvs"
-        Me.RadioButton4.UseVisualStyleBackColor = True
-        '
-        'RadioButton3
-        '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Checked = True
-        Me.RadioButton3.Location = New System.Drawing.Point(19, 100)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(49, 17)
-        Me.RadioButton3.TabIndex = 14
-        Me.RadioButton3.TabStop = True
-        Me.RadioButton3.Text = "Staal"
-        Me.RadioButton3.UseVisualStyleBackColor = True
-        '
-        'Label51
-        '
-        Me.Label51.AutoSize = True
-        Me.Label51.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label51.Location = New System.Drawing.Point(6, 54)
-        Me.Label51.Name = "Label51"
-        Me.Label51.Size = New System.Drawing.Size(175, 18)
-        Me.Label51.TabIndex = 13
-        Me.Label51.Text = "Uitzetting rvs [mm/mm.K]"
         '
         'Label53
         '
         Me.Label53.AutoSize = True
         Me.Label53.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label53.Location = New System.Drawing.Point(6, 27)
+        Me.Label53.Location = New System.Drawing.Point(6, 56)
         Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(186, 18)
+        Me.Label53.Size = New System.Drawing.Size(151, 18)
         Me.Label53.TabIndex = 12
-        Me.Label53.Text = "Uitzetting staal [mm/mm.K]"
-        '
-        'TextBox27
-        '
-        Me.TextBox27.Enabled = False
-        Me.TextBox27.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox27.Location = New System.Drawing.Point(222, 55)
-        Me.TextBox27.Name = "TextBox27"
-        Me.TextBox27.Size = New System.Drawing.Size(81, 24)
-        Me.TextBox27.TabIndex = 9
-        Me.TextBox27.Text = "16E-6"
-        Me.TextBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox28
-        '
-        Me.TextBox28.Enabled = False
-        Me.TextBox28.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox28.Location = New System.Drawing.Point(222, 25)
-        Me.TextBox28.Name = "TextBox28"
-        Me.TextBox28.Size = New System.Drawing.Size(81, 24)
-        Me.TextBox28.TabIndex = 6
-        Me.TextBox28.Text = "12E-6"
-        Me.TextBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Label53.Text = "Uitzetting [mm/mm.K]"
         '
         'Form1
         '
@@ -1794,7 +1732,7 @@ Partial Class Form1
         Me.Controls.Add(Me.TabControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
-        Me.Text = "Persen en Krimpen 22-09-2016"
+        Me.Text = "Persen en Krimpen 08-02-2017"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
@@ -1836,7 +1774,6 @@ Partial Class Form1
         Me.TabPage2.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
-        Me.TabPage3.PerformLayout()
         Me.GroupBox13.ResumeLayout(False)
         Me.GroupBox13.PerformLayout()
         CType(Me.NumericUpDown17, System.ComponentModel.ISupportInitialize).EndInit()

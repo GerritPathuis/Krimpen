@@ -560,18 +560,14 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click, RadioButton3.CheckedChanged, NumericUpDown18.ValueChanged, NumericUpDown17.ValueChanged, NumericUpDown16.ValueChanged, NumericUpDown15.ValueChanged, NumericUpDown14.ValueChanged, NumericUpDown12.ValueChanged, TabPage3.Enter, ComboBox3.SelectedIndexChanged
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click, NumericUpDown18.ValueChanged, NumericUpDown17.ValueChanged, NumericUpDown16.ValueChanged, NumericUpDown15.ValueChanged, NumericUpDown14.ValueChanged, NumericUpDown12.ValueChanged, TabPage3.Enter, ComboBox3.SelectedIndexChanged
         Dim L1, uitz1, Delta1 As Double
         Dim L2, uitz2, Delta2 As Double
         Dim L3, uitz3, Delta3 As Double
         Dim expansie_coef, uitz_tot As Double
         Dim separators() As String = {";"}
+        Double.TryParse(TextBox33.Text, expansie_coef)
 
-        If RadioButton3.Checked Then        'Staal
-            Double.TryParse(TextBox28.Text, expansie_coef)
-        Else
-            Double.TryParse(TextBox27.Text, expansie_coef)
-        End If
 
         If (ComboBox3.SelectedIndex > -1) Then      'Prevent exceptions
             Dim words() As String = metal_expansion(ComboBox3.SelectedIndex).Split(separators, StringSplitOptions.None)
