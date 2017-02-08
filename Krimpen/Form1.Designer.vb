@@ -26,9 +26,9 @@ Partial Class Form1
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Label64 = New System.Windows.Forms.Label()
-        Me.Label37 = New System.Windows.Forms.Label()
         Me.GroupBox11 = New System.Windows.Forms.GroupBox()
         Me.Label50 = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
         Me.NumericUpDown11 = New System.Windows.Forms.NumericUpDown()
         Me.Label48 = New System.Windows.Forms.Label()
         Me.Label47 = New System.Windows.Forms.Label()
@@ -134,6 +134,8 @@ Partial Class Form1
         Me.TextBox13 = New System.Windows.Forms.TextBox()
         Me.TextBox12 = New System.Windows.Forms.TextBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.TextBox33 = New System.Windows.Forms.TextBox()
+        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox13 = New System.Windows.Forms.GroupBox()
         Me.Label59 = New System.Windows.Forms.Label()
@@ -247,16 +249,6 @@ Partial Class Form1
         Me.Label64.TabIndex = 19
         Me.Label64.Text = "http://www.amesweb.info/FitTolerance/PreferredTolerances.aspx"
         '
-        'Label37
-        '
-        Me.Label37.AutoSize = True
-        Me.Label37.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label37.Location = New System.Drawing.Point(13, 200)
-        Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(335, 13)
-        Me.Label37.TabIndex = 18
-        Me.Label37.Text = "Bij deze bedrijfsomstandigheden zir een RVS naaf los op de stalen as."
-        '
         'GroupBox11
         '
         Me.GroupBox11.Controls.Add(Me.Label50)
@@ -291,6 +283,16 @@ Partial Class Form1
         Me.Label50.Size = New System.Drawing.Size(223, 18)
         Me.Label50.TabIndex = 28
         Me.Label50.Text = "Werkplaatstemperatuur [Celsius]"
+        '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label37.Location = New System.Drawing.Point(13, 200)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(335, 13)
+        Me.Label37.TabIndex = 18
+        Me.Label37.Text = "Bij deze bedrijfsomstandigheden zir een RVS naaf los op de stalen as."
         '
         'NumericUpDown11
         '
@@ -1427,6 +1429,8 @@ Partial Class Form1
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.TextBox33)
+        Me.TabPage3.Controls.Add(Me.ComboBox3)
         Me.TabPage3.Controls.Add(Me.Button3)
         Me.TabPage3.Controls.Add(Me.GroupBox13)
         Me.TabPage3.Controls.Add(Me.GroupBox12)
@@ -1437,6 +1441,22 @@ Partial Class Form1
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "As uitzetting"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'TextBox33
+        '
+        Me.TextBox33.Location = New System.Drawing.Point(847, 62)
+        Me.TextBox33.Name = "TextBox33"
+        Me.TextBox33.Size = New System.Drawing.Size(167, 20)
+        Me.TextBox33.TabIndex = 16
+        Me.TextBox33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'ComboBox3
+        '
+        Me.ComboBox3.FormattingEnabled = True
+        Me.ComboBox3.Location = New System.Drawing.Point(506, 62)
+        Me.ComboBox3.Name = "ComboBox3"
+        Me.ComboBox3.Size = New System.Drawing.Size(306, 21)
+        Me.ComboBox3.TabIndex = 15
         '
         'Button3
         '
@@ -1816,6 +1836,7 @@ Partial Class Form1
         Me.TabPage2.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout()
         Me.GroupBox13.ResumeLayout(False)
         Me.GroupBox13.PerformLayout()
         CType(Me.NumericUpDown17, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1970,4 +1991,6 @@ Partial Class Form1
     Friend WithEvents TextBox27 As TextBox
     Friend WithEvents TextBox28 As TextBox
     Friend WithEvents Label64 As Label
+    Friend WithEvents TextBox33 As TextBox
+    Friend WithEvents ComboBox3 As ComboBox
 End Class

@@ -8,18 +8,144 @@ Imports System.Runtime.InteropServices
 Public Class Form1
 
     Public Shared RA_surf() As String = {"  0.2", "  0.4", "  0.8", "  1.6", "  3.2", "  6.3", "  12.5", "  25"}
+    Public Shared metal_expansion() As String = {
+   "Admiralty Brass;20.2",
+    "Aluminum;23.6",
+    "Aluminum Alloy - 2011;23",
+    "Aluminum Alloy - 2017;23.6",
+    "Aluminum Alloy - 2024;23.2",
+    "Aluminum Alloy - 3003;23.2",
+    "Aluminum Alloy - 5052;23.8",
+    "Aluminum Alloy - 5086;23.8",
+    "Aluminum Alloy - 6061;23.4",
+    "Aluminum Alloy - 7075;23.6",
+    "Aluminum Bronze;16.2",
+    "Antimony;9",
+    "Beryllium;12.1",
+    "Beryllium Copper;16.7",
+    "Bismuth;13",
+    "Cast Iron, grey;10.4",
+    "Chromium;5.94",
+    "Cobalt;12.1",
+    "Copper;17.6",
+    "Copper-Base Alloy - C1100 (Electrolytic tough pitch);17.6",
+    "Copper-Base Alloy - C14500 (Free Machining Cu);17.8",
+    "Copper-Base Alloy - C17200, C17300 (Beryllium Cu);17.8",
+    "Copper-Base Alloy - C18200 (Chromium Cu);17.6",
+    "Copper-Base Alloy - C18700 (Leaded Cu);17.6",
+    "Copper-Base Alloy - C22000 (Commercial bronze, 90%);18.4",
+    "Copper-Base Alloy - C23000 (Red brass, 85%);18.7",
+    "Copper-Base Alloy - C26000 (Cartridge brass, 70%);20",
+    "Copper-Base Alloy - C27000 (Yellow brass);20.3",
+    "Copper-Base Alloy - C28000 (Muntz metal, 60%);20.9",
+    "Copper-Base Alloy - C33000 (Low-leaded brass tube);20.2",
+    "Copper-Base Alloy - C35300 (High-leaded brass);20.3",
+    "Copper-Base Alloy - C35600 (Extra high-leaded brass) ;20.5",
+    "Copper-Base Alloy - C36000 (Free machining brass);20.5",
+    "Copper-Base Alloy - C36500 (Leaded Muntz metal);20.9",
+    "Copper-Base Alloy - C46400 (Naval brass);21.2",
+    "Copper-Base Alloy - C51000 (Phosphor bronze, 5% A);17.8",
+    "Copper-Base Alloy - C54400 (Free cutting phos. bronze);17.3",
+    "Copper-Base Alloy - C62300 (Aluminum bronze, 9%);16.2",
+    "Copper-Base Alloy - C62400 (Aluminum bronze, 11%);16.6",
+    "Copper-Base Alloy - Manganese Bronze;21.2",
+    "Copper-Base Alloy - Nickel-Silver;16.2",
+    "Copper-Base Alloy - C63000 (Ni-Al bronze) ;16.2",
+    "Cupronickel;16.2",
+    "Ductile Iron, A536 (120-90-02);10.6 - 11.2",
+    "Gold;14.2",
+    "Hastelloy C;9.54",
+    "Incoloy;14.4",
+    "Inconel;11.5",
+    "Iridium;5.94",
+    "Iron, nodular pearlitic;11.7",
+    "Iron, pure;12.2",
+    "Magnesium;25.2",
+    "Malleable Iron, A220 (50005, 60004, 80002);13.5",
+    "Manganese;21.6",
+    "Manganese Bronze;21.2",
+    "Molybdenum;5.4",
+    "Monel;14",
+    "Nickel Wrought;13.3",
+    "Nickel-Base Alloy - Hastelloy C-22;12.4",
+    "Nickel-Base Alloy - Hastelloy C-276;11.2",
+    "Nickel-Base Alloy - Inconel 718;13",
+    "Nickel-Base Alloy - K500;13.7",
+    "Nickel-Base Alloy - Monel;15.7",
+    "Nickel-Base Alloy - Monel 400;13.9",
+    "Nickel-Base Alloy - Nickel 200, 201, 205;15.3",
+    "Nickel-Base Alloy - R405;13.7",
+    "Niobium (Columbium);7.02",
+    "Osmium;5.04",
+    "Platinum;9",
+    "Plutonium;35.7",
+    "Potassium;82.8",
+    "Red Brass;18.7",
+    "Rhodium;7.92",
+    "Selenium;37.8",
+    "Silicon;5.04",
+    "Silver;19.8",
+    "Sodium;70.2",
+    "Stainless Steel - S30100;16.9",
+    "Stainless Steel - S30200, S30300, S30323;17.3",
+    "Stainless Steel - S30215;16.2",
+    "Stainless Steel - S30400, S30500;17.3",
+    "Stainless Steel - S30430;17.3",
+    "Stainless Steel - S30800;17.3",
+    "Stainless Steel - S30900, S30908;14.9",
+    "Stainless Steel - S31000, S31008;15.8",
+    "Stainless Steel - S31600, S31700;15.8",
+    "Stainless Steel - S31703;16.6",
+    "Stainless Steel - S32100;16.6",
+    "Stainless Steel - S34700;16.6",
+    "Stainless Steel - S34800;16.7",
+    "Stainless Steel - S38400;17.3",
+    "Stainless Steel - S40300, S41000, S41600, 41623;9.9",
+    "Stainless Steel - S40500;10.8",
+    "Stainless Steel - S41400;10.4",
+    "Stainless Steel - S42000, S42020;10.3",
+    "Stainless Steel - S42200;11.2",
+    "Stainless Steel - S42900;10.3",
+    "Stainless Steel - S43000, S43020, S43023;10.4",
+    "Stainless Steel - S43600;9.36",
+    "Stainless Steel - S44002, S44004;10.3",
+    "Stainless Steel - S44003;10.1",
+    "Stainless Steel - S44600;10.4",
+    "Stainless Steel - S50100, S50200;11.2",
+    "Tantalum;6.48",
+    "Thorium;12.1",
+    "Ti-8Mn;10.8",
+    "Tin;23",
+    "Titanium;8.64",
+    "Titanium Alloy - Ti-5Al-2.5Sn;9.54",
+    "Tungsten;4.5",
+    "Uranium;13.3",
+    "Vanadium;7.92",
+    "Wrought Carbon Steel;14",
+    "Yellow Brass;20.3",
+    "Zinc;34.2"}
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Thread.CurrentThread.CurrentCulture = New CultureInfo("en-US")      'Decimal separator "."
         Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")    'Decimal separator "."
+        Dim words() As String
+        Dim separators() As String = {";"}
 
         '-------Fill combobox1, Surface with RA------------------
-        For hh = 0 To RA_surf.Length - 1               'Fill combobox 5 emotor data
+        For hh = 0 To RA_surf.Length - 1               'Fill combobox 1,2
             ComboBox1.Items.Add(RA_surf(hh))
             ComboBox2.Items.Add(RA_surf(hh))
         Next hh
+
+        '-------Fill combobox3, Metal expansion------------------
+        For hh = 0 To metal_expansion.Length - 1       'Fill combobox 3
+            words = metal_expansion(hh).Split(separators, StringSplitOptions.None)
+            ComboBox3.Items.Add(words(0))
+        Next hh
+
         ComboBox1.SelectedIndex = 2         'Ra 0.8 voor krimp of persvlak
         ComboBox2.SelectedIndex = 2         'Ra 0.8 voor krimp of persvlak
+        ComboBox3.SelectedIndex = 80        'Stainless 304
 
         TextBox26.Text =
         "Persvlakken" & vbTab & "Ra 0.8 tot 1.6" & vbCrLf &
@@ -32,6 +158,7 @@ Public Class Form1
 
         Calc()
     End Sub
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, NumericUpDown9.ValueChanged, NumericUpDown7.ValueChanged, NumericUpDown6.ValueChanged, NumericUpDown5.ValueChanged, NumericUpDown4.ValueChanged, NumericUpDown2.ValueChanged, NumericUpDown1.ValueChanged, NumericUpDown3.ValueChanged, NumericUpDown13.ValueChanged, NumericUpDown10.ValueChanged, RadioButton1.CheckedChanged, ComboBox2.SelectedIndexChanged, ComboBox1.SelectedIndexChanged
         Calc()
@@ -433,16 +560,22 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click, RadioButton3.CheckedChanged, NumericUpDown18.ValueChanged, NumericUpDown17.ValueChanged, NumericUpDown16.ValueChanged, NumericUpDown15.ValueChanged, NumericUpDown14.ValueChanged, NumericUpDown12.ValueChanged, TabPage3.Enter
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click, RadioButton3.CheckedChanged, NumericUpDown18.ValueChanged, NumericUpDown17.ValueChanged, NumericUpDown16.ValueChanged, NumericUpDown15.ValueChanged, NumericUpDown14.ValueChanged, NumericUpDown12.ValueChanged, TabPage3.Enter, ComboBox3.SelectedIndexChanged
         Dim L1, uitz1, Delta1 As Double
         Dim L2, uitz2, Delta2 As Double
         Dim L3, uitz3, Delta3 As Double
         Dim expansie_coef, uitz_tot As Double
+        Dim separators() As String = {";"}
 
         If RadioButton3.Checked Then        'Staal
             Double.TryParse(TextBox28.Text, expansie_coef)
         Else
             Double.TryParse(TextBox27.Text, expansie_coef)
+        End If
+
+        If (ComboBox3.SelectedIndex > -1) Then      'Prevent exceptions
+            Dim words() As String = metal_expansion(ComboBox3.SelectedIndex).Split(separators, StringSplitOptions.None)
+            TextBox33.Text = (Convert.ToDouble(words(1)) / 10 ^ 6).ToString    'Expansion coefficient
         End If
 
         L1 = NumericUpDown12.Value
@@ -463,4 +596,5 @@ Public Class Form1
         TextBox31.Text = uitz3.ToString
         TextBox32.Text = uitz_tot.ToString
     End Sub
+
 End Class
