@@ -28,29 +28,29 @@ Public Class Form1
     "Chromium;5.94",
     "Cobalt;12.1",
     "Copper;17.6",
-    "Copper-Base Alloy -C1100 (Electrolytic tough pitch);17.6",
-    "Copper-Base Alloy -C14500 (Free Machining Cu);17.8",
-    "Copper-Base Alloy -C17200, C17300 (Beryllium Cu);17.8",
-    "Copper-Base Alloy -C18200 (Chromium Cu);17.6",
-    "Copper-Base Alloy -C18700 (Leaded Cu);17.6",
-    "Copper-Base Alloy -C22000 (Commercial bronze, 90%);18.4",
-    "Copper-Base Alloy -C23000 (Red brass, 85%);18.7",
-    "Copper-Base Alloy -C26000 (Cartridge brass, 70%);20",
-    "Copper-Base Alloy -C27000 (Yellow brass);20.3",
-    "Copper-Base Alloy -C28000 (Muntz metal, 60%);20.9",
-    "Copper-Base Alloy -C33000 (Low-leaded brass tube);20.2",
-    "Copper-Base Alloy -C35300 (High-leaded brass);20.3",
-    "Copper-Base Alloy -C35600 (Extra high-leaded brass) ;20.5",
-    "Copper-Base Alloy -C36000 (Free machining brass);20.5",
-    "Copper-Base Alloy -C36500 (Leaded Muntz metal);20.9",
-    "Copper-Base Alloy -C46400 (Naval brass);21.2",
-    "Copper-Base Alloy -C51000 (Phosphor bronze, 5% A);17.8",
-    "Copper-Base Alloy -C54400 (Free cutting phos. bronze);17.3",
-    "Copper-Base Alloy -C62300 (Aluminum bronze, 9%);16.2",
-    "Copper-Base Alloy -C62400 (Aluminum bronze, 11%);16.6",
-    "Copper-Base Alloy -Manganese Bronze;21.2",
-    "Copper-Base Alloy -Nickel-Silver;16.2",
-    "Copper-Base Alloy -C63000 (Ni-Al bronze) ;16.2",
+    "Copper-Alloy -C1100 (Electrolytic tough pitch);17.6",
+    "Copper-Alloy -C14500 (Free Machining Cu);17.8",
+    "Copper-Alloy -C17200, C17300 (Beryllium Cu);17.8",
+    "Copper-Alloy -C18200 (Chromium Cu);17.6",
+    "Copper-Alloy -C18700 (Leaded Cu);17.6",
+    "Copper-Alloy -C22000 (Commercial bronze, 90%);18.4",
+    "Copper-Alloy -C23000 (Red brass, 85%);18.7",
+    "Copper-Alloy -C26000 (Cartridge brass, 70%);20",
+    "Copper-Alloy -C27000 (Yellow brass);20.3",
+    "Copper-Alloy -C28000 (Muntz metal, 60%);20.9",
+    "Copper-Alloy -C33000 (Low-leaded brass tube);20.2",
+    "Copper-Alloy -C35300 (High-leaded brass);20.3",
+    "Copper-Alloy -C35600 (Extra high-leaded brass) ;20.5",
+    "Copper-Alloy -C36000 (Free machining brass);20.5",
+    "Copper-Alloy -C36500 (Leaded Muntz metal);20.9",
+    "Copper-Alloy -C46400 (Naval brass);21.2",
+    "Copper-Alloy -C51000 (Phosphor bronze, 5% A);17.8",
+    "Copper-Alloy -C54400 (Free cutting phos. bronze);17.3",
+    "Copper-Alloy -C62300 (Aluminum bronze, 9%);16.2",
+    "Copper-Alloy -C62400 (Aluminum bronze, 11%);16.6",
+    "Copper-Alloy -Manganese Bronze;21.2",
+    "Copper-Alloy -Nickel-Silver;16.2",
+    "Copper-Alloy -C63000 (Ni-Al bronze) ;16.2",
     "Cupronickel;16.2",
     "Ductile Iron, A536 (120-90-02);10.9",
     "Gold;14.2",
@@ -67,14 +67,14 @@ Public Class Form1
     "Molybdenum;5.4",
     "Monel;14",
     "Nickel Wrought;13.3",
-    "Nickel-Base Alloy - Hastelloy C-22;12.4",
-    "Nickel-Base Alloy - Hastelloy C-276;11.2",
-    "Nickel-Base Alloy - Inconel 718;13",
-    "Nickel-Base Alloy - K500;13.7",
-    "Nickel-Base Alloy - Monel;15.7",
-    "Nickel-Base Alloy - Monel 400;13.9",
-    "Nickel-Base Alloy - Nickel 200, 201, 205;15.3",
-    "Nickel-Base Alloy - R405;13.7",
+    "Nickel-Alloy - Hastelloy C-22;12.4",
+    "Nickel-Alloy - Hastelloy C-276;11.2",
+    "Nickel-Alloy - Inconel 718;13",
+    "Nickel-Alloy - K500;13.7",
+    "Nickel-Alloy - Monel;15.7",
+    "Nickel-Alloy - Monel 400;13.9",
+    "Nickel-Alloy - Nickel 200, 201, 205;15.3",
+    "Nickel-Alloy - R405;13.7",
     "Niobium (Columbium);7.02",
     "Osmium;5.04",
     "Platinum;9",
@@ -158,15 +158,15 @@ Public Class Form1
         For hh = 0 To metal_expansion.Length - 1       'Fill combobox 3
             words = metal_expansion(hh).Split(separators, StringSplitOptions.None)
             ComboBox3.Items.Add(words(0))
-            ComboBox4.Items.Add(words(0))
-            ComboBox5.Items.Add(words(0))
+            ComboBox4.Items.Add(words(0))   'Shaft
+            ComboBox5.Items.Add(words(0))   'Hub
         Next hh
 
         ComboBox1.SelectedIndex = 2         'Ra 0.8 voor krimp of persvlak
         ComboBox2.SelectedIndex = 2         'Ra 0.8 voor krimp of persvlak
         ComboBox3.SelectedIndex = 85        'Stainless 304
-        ComboBox4.SelectedIndex = 85        'Stainless 304
-        ComboBox5.SelectedIndex = 78        'Steel S355
+        ComboBox4.SelectedIndex = 85        'SHAFT material
+        ComboBox5.SelectedIndex = 78        'HUB material
 
         TextBox26.Text =
         "Persvlakken" & vbTab & "Ra 0.8 tot 1.6" & vbCrLf &
@@ -181,17 +181,18 @@ Public Class Form1
     End Sub
 
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, NumericUpDown9.ValueChanged, NumericUpDown7.ValueChanged, NumericUpDown6.ValueChanged, NumericUpDown5.ValueChanged, NumericUpDown4.ValueChanged, NumericUpDown2.ValueChanged, NumericUpDown1.ValueChanged, NumericUpDown3.ValueChanged, NumericUpDown13.ValueChanged, NumericUpDown10.ValueChanged, RadioButton1.CheckedChanged, ComboBox2.SelectedIndexChanged, ComboBox1.SelectedIndexChanged, ComboBox5.SelectedIndexChanged, ComboBox4.SelectedIndexChanged
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, NumericUpDown9.ValueChanged, NumericUpDown7.ValueChanged, NumericUpDown6.ValueChanged, NumericUpDown5.ValueChanged, NumericUpDown4.ValueChanged, NumericUpDown2.ValueChanged, NumericUpDown1.ValueChanged, NumericUpDown3.ValueChanged, NumericUpDown13.ValueChanged, NumericUpDown10.ValueChanged, ComboBox2.SelectedIndexChanged, ComboBox1.SelectedIndexChanged, ComboBox5.SelectedIndexChanged, ComboBox4.SelectedIndexChanged
         Calc()
     End Sub
 
     Private Sub Calc()
         Dim power, moment_motor, speed, factor As Double
-        Dim OD_as, OD_naaf, ID_naaf, ring_dikte As Double
+        Dim OD_shaft, OD_hub, ID_hub, ring_dikte As Double
         Dim lengte_as, Coeffie_slip, moment_slip, p_vlaktedruk, trekspanning_ring, combi_spanning As Double
         Dim Elast_mod, sd_verhouding, s_maat_mu As Double
-        Dim Therm_uitzetting_rvs, Therm_uitzetting_staal, delta_temp As Double
-        Dim Coef_exp_staal, Coef_exp_rvs, Bedrijfs_temp, exp_verschil As Double
+        Dim Therm_uitzetting_hub, Therm_uitzetting_shaft, delta_temp As Double
+        Dim Therm_uitz_hub_bedrijf, Therm_uitz_shaft_bedrijf As Double
+        Dim Coef_exp_shaft, Coef_exp_hub, Bedrijfs_temp, exp_verschil As Double
         Dim F_pers, S_verlies, actual_hot_s, production_s As Double
         Dim ra1, ra2 As Double
         Dim separators() As String = {";"}
@@ -204,9 +205,8 @@ Public Class Form1
             TextBox19.Text = (Convert.ToDouble(words(1)) / 10 ^ 6).ToString    'Expansion coefficient
         End If
 
-
-        Double.TryParse(TextBox18.Text, Coef_exp_staal)
-        Double.TryParse(TextBox19.Text, Coef_exp_rvs)
+        Double.TryParse(TextBox18.Text, Coef_exp_shaft)
+        Double.TryParse(TextBox19.Text, Coef_exp_hub)
         Double.TryParse(ComboBox1.SelectedItem, ra1)
         Double.TryParse(ComboBox2.SelectedItem, ra2)
 
@@ -214,64 +214,63 @@ Public Class Form1
         speed = NumericUpDown5.Value
         factor = NumericUpDown7.Value
 
-        OD_as = NumericUpDown1.Value
-        OD_naaf = NumericUpDown4.Value
-        ID_naaf = NumericUpDown1.Value                      'ID_naaf is praktisch OD_as
+        OD_shaft = NumericUpDown1.Value
+        OD_hub = NumericUpDown4.Value
+        ID_hub = NumericUpDown1.Value                      'ID_hub is praktisch OD_shaft
         lengte_as = NumericUpDown2.Value                    'Insteeklengte as
         Coeffie_slip = NumericUpDown3.Value                 'Coefficient slip
-        ring_dikte = (OD_naaf - ID_naaf) / 2
+        ring_dikte = (OD_hub - ID_hub) / 2
         Elast_mod = NumericUpDown8.Value
 
-        delta_temp = NumericUpDown9.Value
-        Bedrijfs_temp = NumericUpDown13.Value - NumericUpDown11.Value
+        delta_temp = NumericUpDown9.Value                   'Montage temp
+        Bedrijfs_temp = NumericUpDown13.Value - NumericUpDown11.Value   'Befrijf temp
         production_s = NumericUpDown10.Value                'koude productie S maat
-
-        '--------------------------------
-        If RadioButton1.Checked = True Then
-            GroupBox11.Visible = True
-        Else
-            GroupBox11.Visible = False
-        End If
 
         '----------- rekenen -----------
         Try
             moment_motor = power * factor / (speed * PI / 30)
 
             '----- as -----------------------
-            p_vlaktedruk = 2 * moment_motor * 1000 / (PI * OD_as ^ 2 * lengte_as * Coeffie_slip)    '[N/mm]
-            moment_slip = p_vlaktedruk * PI * OD_as * lengte_as * Coeffie_slip * 0.5 * OD_as / 1000 '[N.m]
+            p_vlaktedruk = 2 * moment_motor * 1000 / (PI * OD_shaft ^ 2 * lengte_as * Coeffie_slip)    '[N/mm]
+            moment_slip = p_vlaktedruk * PI * OD_shaft * lengte_as * Coeffie_slip * 0.5 * OD_shaft / 1000 '[N.m]
 
             '----- ring ---------------------
-            trekspanning_ring = p_vlaktedruk * (OD_naaf ^ 2 + ID_naaf ^ 2) / (OD_naaf ^ 2 - ID_naaf ^ 2)
+            trekspanning_ring = p_vlaktedruk * (OD_hub ^ 2 + ID_hub ^ 2) / (OD_hub ^ 2 - ID_hub ^ 2)
 
             '----- s/d ---------------------
-            sd_verhouding = 2 * p_vlaktedruk * OD_naaf ^ 2 / (Elast_mod * (OD_naaf ^ 2 - ID_naaf ^ 2))
-            s_maat_mu = sd_verhouding * OD_as * 1000    'Maat noodzakelijk voor het overbrengen Slip moment
+            sd_verhouding = 2 * p_vlaktedruk * OD_hub ^ 2 / (Elast_mod * (OD_hub ^ 2 - ID_hub ^ 2))
+            s_maat_mu = sd_verhouding * OD_shaft * 1000    'Maat noodzakelijk voor het overbrengen Slip moment
 
-            '----- Therm_uitzetting --
-            Therm_uitzetting_rvs = delta_temp * Coef_exp_rvs * ID_naaf * 1000           '[mu]
-            Therm_uitzetting_staal = delta_temp * Coef_exp_staal * ID_naaf * 1000       '[mu]
+            '----- Therm_uitzetting montage --
+            Therm_uitzetting_hub = delta_temp * Coef_exp_hub * ID_hub * 1000           '[mu]
+            Therm_uitzetting_shaft = delta_temp * Coef_exp_shaft * ID_hub * 1000       '[mu]
 
             '------ Gecombineerde spanning ------------------ 
             combi_spanning = Sqrt(trekspanning_ring ^ 2 + p_vlaktedruk ^ 2 + trekspanning_ring * p_vlaktedruk)
 
             '----- Perskracht --
-            F_pers = p_vlaktedruk * Coeffie_slip * PI * OD_as * lengte_as   '[N]
+            F_pers = p_vlaktedruk * Coeffie_slip * PI * OD_shaft * lengte_as   '[N]
             F_pers /= 10000                                                 '[N-> ton
 
             '----- Oppervlakte ruwheid --------
             S_verlies = Round(1.2 * (ra1 + ra2), 0)        '60% verlies 
 
-            '----- naaf rvs en as staal -----------------------
-            exp_verschil = Bedrijfs_temp * OD_as * (Coef_exp_rvs - Coef_exp_staal) * 1000
+            '----- hub en as bij bedrijfstemperatuur -----------------------
+            Therm_uitz_hub_bedrijf = Bedrijfs_temp * OD_shaft * Coef_exp_hub * 1000
+            Therm_uitz_shaft_bedrijf = Bedrijfs_temp * OD_shaft * Coef_exp_shaft * 1000
+            exp_verschil = Therm_uitz_hub_bedrijf - Therm_uitz_shaft_bedrijf
+
+            TextBox38.Text = Round(Therm_uitz_shaft_bedrijf, 0).ToString    'Thermische expansie shaft
+            TextBox36.Text = Round(Therm_uitz_hub_bedrijf, 0).ToString      'Thermische expansie hub
 
             '----------------- actual_hot_s ----------------------
             actual_hot_s = production_s - S_verlies - exp_verschil
 
             '----- Presenteren --------------
             TextBox1.Text = Round(moment_motor, 0).ToString
-            TextBox2.Text = Round(Therm_uitzetting_rvs, 0).ToString     'Thermische expansie naaf rvs
-            TextBox21.Text = Round(Therm_uitzetting_staal, 0).ToString  'Thermische expansie naaf staal
+            TextBox35.Text = Round(Therm_uitzetting_hub, 0).ToString     'Thermische expansie HUB
+            TextBox34.Text = Round(Therm_uitzetting_shaft, 0).ToString  'Thermische expansie SHAFT
+
             TextBox3.Text = Round(ring_dikte, 1).ToString
             TextBox4.Text = Round(p_vlaktedruk, 1).ToString             'Radiale spanning = vlaktedrukColor.Red
             TextBox5.Text = Round(p_vlaktedruk, 1).ToString             'Vlaktedruk as
@@ -279,7 +278,7 @@ Public Class Form1
             TextBox6.Text = Round(sd_verhouding, 4).ToString            's/d 
             TextBox8.Text = Round(1 / sd_verhouding, 0).ToString        'd/s
             TextBox9.Text = Round(s_maat_mu, 0).ToString                's_maat
-            TextBox10.Text = Round(combi_spanning, 0).ToString           'gecombineerde spanning naaf
+            TextBox10.Text = Round(combi_spanning, 0).ToString           'gecombineerde spanning hub
 
             TextBox11.Text = Round(F_pers, 1).ToString                  'Perskracht [ton]
             TextBox14.Text = Round(S_verlies, 1).ToString               'Verlies door oppervlakte ruwheid [mu]
@@ -306,7 +305,7 @@ Public Class Form1
 
             If actual_hot_s > s_maat_mu Then     'Slip at operating temperatuur
                 TextBox24.BackColor = Color.LightGreen
-                NumericUpDown13.BackColor = SystemColors.Window
+                NumericUpDown13.BackColor = Color.Yellow
                 Label37.Visible = False
             Else
                 TextBox24.BackColor = Color.Red
@@ -314,7 +313,7 @@ Public Class Form1
                 Label37.Visible = True
             End If
 
-            If NumericUpDown1.Value < NumericUpDown4.Value - 20 Then      'Onmogelijke naaf dimensie
+            If NumericUpDown1.Value < NumericUpDown4.Value - 20 Then      'Onmogelijke hub dimensie
                 NumericUpDown4.BackColor = SystemColors.Window
             Else
                 NumericUpDown4.BackColor = Color.Red
@@ -353,7 +352,7 @@ Public Class Form1
         oPara2.Range.Font.Size = font_sizze
         oPara2.Format.SpaceAfter = 1
         oPara2.Range.Font.Bold = False
-        oPara2.Range.Text = "Berekening krimpen en persen van as en naaf" & vbCrLf
+        oPara2.Range.Text = "Berekening krimpen en persen van as en hub" & vbCrLf
         oPara2.Range.InsertParagraphAfter()
 
         '----------------------------------------------
@@ -371,7 +370,7 @@ Public Class Form1
         oTable.Cell(row, 1).Range.Text = "Project number "
         oTable.Cell(row, 2).Range.Text = TextBox17.Text
         row += 1
-        oTable.Cell(row, 1).Range.Text = "Naaf nummer "
+        oTable.Cell(row, 1).Range.Text = "hub nummer "
         oTable.Cell(row, 2).Range.Text = TextBox22.Text
         row += 1
         oTable.Cell(row, 1).Range.Text = "Author "
@@ -403,7 +402,7 @@ Public Class Form1
         oTable.Cell(row, 2).Range.Text = NumericUpDown2.Value
         oTable.Cell(row, 3).Range.Text = "[mm]"
         row += 1
-        oTable.Cell(row, 1).Range.Text = "Buiten diameter naaf (D)"
+        oTable.Cell(row, 1).Range.Text = "Buiten diameter hub (D)"
         oTable.Cell(row, 2).Range.Text = NumericUpDown4.Value
         oTable.Cell(row, 3).Range.Text = "[mm]"
         row += 1
@@ -445,7 +444,7 @@ Public Class Form1
         oTable.Cell(row, 3).Range.Text = "[mu]"
         row += 1
         '---- --------
-        oTable.Cell(row, 1).Range.Text = "Ruwheid naaf"
+        oTable.Cell(row, 1).Range.Text = "Ruwheid hub"
         oTable.Cell(row, 2).Range.Text = ComboBox2.SelectedItem
         oTable.Cell(row, 3).Range.Text = "[mu]"
 
@@ -505,12 +504,12 @@ Public Class Form1
         oTable.Rows.Item(row).Range.Font.Bold = True
         oTable.Cell(row, 1).Range.Text = "Warme maat"
         row += 1
-        oTable.Cell(row, 1).Range.Text = "Thermische Therm_uitzetting_rvs"
-        oTable.Cell(row, 2).Range.Text = TextBox2.Text
+        oTable.Cell(row, 1).Range.Text = "Thermische uitzetting AS"
+        oTable.Cell(row, 2).Range.Text = TextBox38.Text
         oTable.Cell(row, 3).Range.Text = "[mu]"
         row += 1
-        oTable.Cell(row, 1).Range.Text = "Thermische Therm_uitzetting_staal"
-        oTable.Cell(row, 2).Range.Text = TextBox21.Text
+        oTable.Cell(row, 1).Range.Text = "Thermische uitzetting hub"
+        oTable.Cell(row, 2).Range.Text = TextBox36.Text
         oTable.Cell(row, 3).Range.Text = "[mu]"
 
         oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
@@ -518,52 +517,51 @@ Public Class Form1
         oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
         oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
 
-        If RadioButton1.Checked = True Then
-            'Insert a 7 x 3 table, fill it with data and change the column widths.
-            oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 7, 3)
-            oTable.Range.ParagraphFormat.SpaceAfter = 1
-            oTable.Range.Font.Size = font_sizze
-            oTable.Range.Font.Bold = False
-            oTable.Rows.Item(1).Range.Font.Bold = True
-            row = 1
+
+        'Insert a 7 x 3 table, fill it with data and change the column widths.
+        oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 7, 3)
+        oTable.Range.ParagraphFormat.SpaceAfter = 1
+        oTable.Range.Font.Size = font_sizze
+        oTable.Range.Font.Bold = False
+        oTable.Rows.Item(1).Range.Font.Bold = True
+        row = 1
+        oTable.Rows.Item(row).Range.Font.Bold = True
+        oTable.Cell(row, 1).Range.Text = "Samenvatting RVS hub op stalen as"
+        row += 1
+        oTable.Cell(row, 1).Range.Text = "Bedrijfstemperatuur"
+        oTable.Cell(row, 2).Range.Text = NumericUpDown13.Text.ToString
+        oTable.Cell(row, 3).Range.Text = "[C]"
+        row += 1
+        oTable.Cell(row, 1).Range.Text = "Koude s maat"
+        oTable.Cell(row, 2).Range.Text = NumericUpDown10.Text.ToString
+        oTable.Cell(row, 3).Range.Text = "[mu]"
+        row += 1
+        oTable.Cell(row, 1).Range.Text = "Ra diameter verlies"
+        oTable.Cell(row, 2).Range.Text = TextBox23.Text
+        oTable.Cell(row, 3).Range.Text = "[mu]"
+        row += 1
+        oTable.Cell(row, 1).Range.Text = "Bedrijfs thermische expansie verlies"
+        oTable.Cell(row, 2).Range.Text = TextBox20.Text
+        oTable.Cell(row, 3).Range.Text = "[mu]"
+        row += 1
+        oTable.Cell(row, 1).Range.Text = "Resulterende warme bedrijfs S maat"
+        oTable.Cell(row, 2).Range.Text = TextBox24.Text
+        oTable.Cell(row, 3).Range.Text = "[mu]"
+
+        Double.TryParse(TextBox24.Text, ss_hot)
+        Double.TryParse(TextBox9.Text, ss_slip)
+
+        If ss_hot < ss_slip Then     'Slip at operating temperatuur
+            row += 1
             oTable.Rows.Item(row).Range.Font.Bold = True
-            oTable.Cell(row, 1).Range.Text = "Samenvatting RVS naaf op stalen as"
-            row += 1
-            oTable.Cell(row, 1).Range.Text = "Bedrijfstemperatuur"
-            oTable.Cell(row, 2).Range.Text = NumericUpDown13.Text.ToString
-            oTable.Cell(row, 3).Range.Text = "[C]"
-            row += 1
-            oTable.Cell(row, 1).Range.Text = "Koude s maat"
-            oTable.Cell(row, 2).Range.Text = NumericUpDown10.Text.ToString
-            oTable.Cell(row, 3).Range.Text = "[mu]"
-            row += 1
-            oTable.Cell(row, 1).Range.Text = "Ra diameter verlies"
-            oTable.Cell(row, 2).Range.Text = TextBox23.Text
-            oTable.Cell(row, 3).Range.Text = "[mu]"
-            row += 1
-            oTable.Cell(row, 1).Range.Text = "Bedrijfs thermische expansie verlies"
-            oTable.Cell(row, 2).Range.Text = TextBox20.Text
-            oTable.Cell(row, 3).Range.Text = "[mu]"
-            row += 1
-            oTable.Cell(row, 1).Range.Text = "Resulterende warme bedrijfs S maat"
-            oTable.Cell(row, 2).Range.Text = TextBox24.Text
-            oTable.Cell(row, 3).Range.Text = "[mu]"
-
-            Double.TryParse(TextBox24.Text, ss_hot)
-            Double.TryParse(TextBox9.Text, ss_slip)
-
-            If ss_hot < ss_slip Then     'Slip at operating temperatuur
-                row += 1
-                oTable.Rows.Item(row).Range.Font.Bold = True
-                oTable.Cell(row, 1).Range.Text = "Naaf zit los !!"
-            Else
-                oTable.Cell(row, 1).Range.Text = "Naaf zit vast !!"
-            End If
-            oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
-            oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
-            oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
-            oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
+            oTable.Cell(row, 1).Range.Text = "hub zit los !!"
+        Else
+            oTable.Cell(row, 1).Range.Text = "hub zit vast !!"
         End If
+        oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
+        oTable.Columns.Item(2).Width = oWord.InchesToPoints(0.8)
+        oTable.Columns.Item(3).Width = oWord.InchesToPoints(0.9)
+        oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
 
 
         ' save the image to c:\Temp
@@ -584,7 +582,7 @@ Public Class Form1
         IO.File.Delete(FilePath & "\TestFile.jpg")
 
         Try
-            ufilename = "C:\temp\Naaf_krimp_" & DateTime.Now.ToString("yyyy_MM_dd__HH_mm_ss") & ".docx"
+            ufilename = "C:\temp\hub_krimp_" & DateTime.Now.ToString("yyyy_MM_dd__HH_mm_ss") & ".docx"
             oDoc.SaveAs(ufilename)
         Catch ex As Exception
             MessageBox.Show(ex.Message)  ' Show the exception's message.
@@ -629,4 +627,7 @@ Public Class Form1
         TextBox37.Text = uitz_as.ToString
     End Sub
 
+    Private Sub Label65_Click(sender As Object, e As EventArgs) Handles Label65.Click
+
+    End Sub
 End Class
