@@ -167,6 +167,8 @@ Partial Class Form1
         Me.TextBox33 = New System.Windows.Forms.TextBox()
         Me.Label53 = New System.Windows.Forms.Label()
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label38 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox11.SuspendLayout()
@@ -272,9 +274,9 @@ Partial Class Form1
         Me.GroupBox11.Controls.Add(Me.NumericUpDown13)
         Me.GroupBox11.Controls.Add(Me.TextBox20)
         Me.GroupBox11.Controls.Add(Me.Label44)
-        Me.GroupBox11.Location = New System.Drawing.Point(731, 262)
+        Me.GroupBox11.Location = New System.Drawing.Point(744, 262)
         Me.GroupBox11.Name = "GroupBox11"
-        Me.GroupBox11.Size = New System.Drawing.Size(351, 221)
+        Me.GroupBox11.Size = New System.Drawing.Size(340, 221)
         Me.GroupBox11.TabIndex = 17
         Me.GroupBox11.TabStop = False
         Me.GroupBox11.Text = "Samenvatting; As van staal en Naaf van RVS"
@@ -293,7 +295,7 @@ Partial Class Form1
         '
         Me.Label37.AutoSize = True
         Me.Label37.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label37.Location = New System.Drawing.Point(13, 200)
+        Me.Label37.Location = New System.Drawing.Point(5, 200)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(335, 13)
         Me.Label37.TabIndex = 18
@@ -315,7 +317,7 @@ Partial Class Form1
         '
         Me.Label48.AutoSize = True
         Me.Label48.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label48.Location = New System.Drawing.Point(328, 141)
+        Me.Label48.Location = New System.Drawing.Point(226, 141)
         Me.Label48.Name = "Label48"
         Me.Label48.Size = New System.Drawing.Size(13, 18)
         Me.Label48.TabIndex = 26
@@ -325,7 +327,7 @@ Partial Class Form1
         '
         Me.Label47.AutoSize = True
         Me.Label47.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label47.Location = New System.Drawing.Point(328, 113)
+        Me.Label47.Location = New System.Drawing.Point(223, 112)
         Me.Label47.Name = "Label47"
         Me.Label47.Size = New System.Drawing.Size(13, 18)
         Me.Label47.TabIndex = 25
@@ -386,7 +388,7 @@ Partial Class Form1
         '
         Me.Label42.AutoSize = True
         Me.Label42.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label42.Location = New System.Drawing.Point(328, 84)
+        Me.Label42.Location = New System.Drawing.Point(223, 84)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(17, 18)
         Me.Label42.TabIndex = 15
@@ -532,9 +534,9 @@ Partial Class Form1
         Me.GroupBox9.Controls.Add(Me.Label32)
         Me.GroupBox9.Controls.Add(Me.TextBox14)
         Me.GroupBox9.Controls.Add(Me.Label31)
-        Me.GroupBox9.Location = New System.Drawing.Point(731, 15)
+        Me.GroupBox9.Location = New System.Drawing.Point(744, 15)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(351, 104)
+        Me.GroupBox9.Size = New System.Drawing.Size(340, 104)
         Me.GroupBox9.TabIndex = 14
         Me.GroupBox9.TabStop = False
         Me.GroupBox9.Text = "Ruwheden"
@@ -804,6 +806,8 @@ Partial Class Form1
         '
         'GroupBox6
         '
+        Me.GroupBox6.Controls.Add(Me.Label38)
+        Me.GroupBox6.Controls.Add(Me.Label16)
         Me.GroupBox6.Controls.Add(Me.ComboBox4)
         Me.GroupBox6.Controls.Add(Me.ComboBox5)
         Me.GroupBox6.Controls.Add(Me.Label27)
@@ -822,20 +826,22 @@ Partial Class Form1
         '
         'ComboBox4
         '
+        Me.ComboBox4.BackColor = System.Drawing.Color.Yellow
         Me.ComboBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(11, 73)
+        Me.ComboBox4.Location = New System.Drawing.Point(58, 73)
         Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(284, 24)
+        Me.ComboBox4.Size = New System.Drawing.Size(237, 24)
         Me.ComboBox4.TabIndex = 20
         '
         'ComboBox5
         '
+        Me.ComboBox5.BackColor = System.Drawing.Color.Yellow
         Me.ComboBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ComboBox5.FormattingEnabled = True
-        Me.ComboBox5.Location = New System.Drawing.Point(11, 104)
+        Me.ComboBox5.Location = New System.Drawing.Point(58, 104)
         Me.ComboBox5.Name = "ComboBox5"
-        Me.ComboBox5.Size = New System.Drawing.Size(284, 24)
+        Me.ComboBox5.Size = New System.Drawing.Size(237, 24)
         Me.ComboBox5.TabIndex = 19
         '
         'Label27
@@ -1003,9 +1009,9 @@ Partial Class Form1
         Me.GroupBox4.Controls.Add(Me.Label13)
         Me.GroupBox4.Controls.Add(Me.NumericUpDown9)
         Me.GroupBox4.Controls.Add(Me.Label24)
-        Me.GroupBox4.Location = New System.Drawing.Point(731, 126)
+        Me.GroupBox4.Location = New System.Drawing.Point(744, 126)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(351, 126)
+        Me.GroupBox4.Size = New System.Drawing.Size(340, 126)
         Me.GroupBox4.TabIndex = 6
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Thermische Expansie"
@@ -1026,9 +1032,9 @@ Partial Class Form1
         Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label39.Location = New System.Drawing.Point(13, 77)
         Me.Label39.Name = "Label39"
-        Me.Label39.Size = New System.Drawing.Size(216, 18)
+        Me.Label39.Size = New System.Drawing.Size(223, 18)
         Me.Label39.TabIndex = 10
-        Me.Label39.Text = "Thermische uitzetting staal [mu]"
+        Me.Label39.Text = "Thermische uitzetting NAAF [mu]"
         '
         'Label11
         '
@@ -1036,9 +1042,9 @@ Partial Class Form1
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.Location = New System.Drawing.Point(13, 47)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(215, 18)
+        Me.Label11.Size = New System.Drawing.Size(204, 18)
         Me.Label11.TabIndex = 9
-        Me.Label11.Text = "Thermische uitzetting RVS [mu]"
+        Me.Label11.Text = "Thermische uitzetting AS [mu]"
         '
         'TextBox2
         '
@@ -1255,7 +1261,7 @@ Partial Class Form1
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(280, 24)
+        Me.Label6.Location = New System.Drawing.Point(158, 23)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(29, 18)
         Me.Label6.TabIndex = 5
@@ -1302,7 +1308,7 @@ Partial Class Form1
         '
         Me.Label28.AutoSize = True
         Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label28.Location = New System.Drawing.Point(280, 54)
+        Me.Label28.Location = New System.Drawing.Point(161, 54)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(26, 18)
         Me.Label28.TabIndex = 5
@@ -1312,7 +1318,7 @@ Partial Class Form1
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(280, 24)
+        Me.Label5.Location = New System.Drawing.Point(153, 25)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(34, 18)
         Me.Label5.TabIndex = 4
@@ -1811,6 +1817,26 @@ Partial Class Form1
         Me.ComboBox3.Size = New System.Drawing.Size(427, 24)
         Me.ComboBox3.TabIndex = 15
         '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(12, 78)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(27, 18)
+        Me.Label16.TabIndex = 21
+        Me.Label16.Text = "AS"
+        '
+        'Label38
+        '
+        Me.Label38.AutoSize = True
+        Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label38.Location = New System.Drawing.Point(11, 106)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(46, 18)
+        Me.Label38.TabIndex = 22
+        Me.Label38.Text = "NAAF"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2028,4 +2054,6 @@ Partial Class Form1
     Friend WithEvents Label73 As Label
     Friend WithEvents ComboBox4 As ComboBox
     Friend WithEvents ComboBox5 As ComboBox
+    Friend WithEvents Label38 As Label
+    Friend WithEvents Label16 As Label
 End Class

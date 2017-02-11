@@ -91,26 +91,32 @@ Public Class Form1
     "Steel S355 (@ 300c);12.9",
     "Stainless - 30100;16.9",
     "Stainless - S30200;17.3",
+    "Stainless - S30215;16.2",
     "Stainless - S30300;17.3",
     "Stainless - S30323;17.3",
-    "Stainless - S30215;16.2",
     "Stainless - S30400;17.3",
-    "Stainless - S30500;17.3",
     "Stainless - S30430;17.3",
+    "Stainless - S30500;17.3",
     "Stainless - S30800;17.3",
-    "Stainless - S30900, S30908;14.9",
-    "Stainless - S31000, S31008;15.8",
-    "Stainless - S31600, S31700;15.8",
+    "Stainless - S30900;14.9",
+    "Stainless - S30908;14.9",
+    "Stainless - S31000;15.8",
+    "Stainless - S31008;15.8",
+    "Stainless - S31600;15.8",
+    "Stainless - S31700;15.8",
     "Stainless - S31703;16.6",
     "Stainless - S32100;16.6",
     "Stainless - S34700;16.6",
     "Stainless - S34800;16.7",
     "Stainless - S38400;17.3",
-    "Stainless - S40300, S41000;9.9",
-    "Stainless - S41600, 41623;9.9",
+    "Stainless - S41000;9.9",
+    "Stainless - S40300;9.9",
     "Stainless - S40500;10.8",
     "Stainless - S41400;10.4",
-    "Stainless - S42000, S42020;10.3",
+    "Stainless - S41600 ;9.9",
+    "Stainless - S41623;9.9",
+    "Stainless - S42000;10.3",
+    "Stainless - S42020;10.3",
     "Stainless - S42200;11.2",
     "Stainless - S42900;10.3",
     "Stainless - S43000;10.4",
@@ -118,8 +124,8 @@ Public Class Form1
     "Stainless - S43023;10.4",
     "Stainless - S43600;9.36",
     "Stainless - S44002;10.3",
-    "Stainless - S44004;10.3",
     "Stainless - S44003;10.1",
+    "Stainless - S44004;10.3",
     "Stainless - S44600;10.4",
     "Stainless - S50100;11.2",
     "Stainless - S50200;11.2",
@@ -158,8 +164,8 @@ Public Class Form1
 
         ComboBox1.SelectedIndex = 2         'Ra 0.8 voor krimp of persvlak
         ComboBox2.SelectedIndex = 2         'Ra 0.8 voor krimp of persvlak
-        ComboBox3.SelectedIndex = 83        'Stainless 304
-        ComboBox4.SelectedIndex = 83        'Stainless 304
+        ComboBox3.SelectedIndex = 85        'Stainless 304
+        ComboBox4.SelectedIndex = 85        'Stainless 304
         ComboBox5.SelectedIndex = 78        'Steel S355
 
         TextBox26.Text =
