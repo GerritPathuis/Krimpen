@@ -207,8 +207,8 @@ Public Class Form1
 
         Double.TryParse(TextBox18.Text, Coef_exp_shaft)
         Double.TryParse(TextBox19.Text, Coef_exp_hub)
-        Double.TryParse(ComboBox1.SelectedItem, ra1)
-        Double.TryParse(ComboBox2.SelectedItem, ra2)
+        Double.TryParse(CType(ComboBox1.SelectedItem, String), ra1)
+        Double.TryParse(CType(ComboBox2.SelectedItem, String), ra2)
 
         power = NumericUpDown6.Value * 1000
         speed = NumericUpDown5.Value
@@ -335,7 +335,7 @@ Public Class Form1
 
         'Start Word and open the document template. 
         font_sizze = 9
-        oWord = CreateObject("Word.Application")
+        oWord = CType(CreateObject("Word.Application"), Word.Application)
         oWord.Visible = True
         oDoc = oWord.Documents.Add
 
@@ -344,14 +344,14 @@ Public Class Form1
         oPara1.Range.Text = "VTK Engineering"
         oPara1.Range.Font.Name = "Arial"
         oPara1.Range.Font.Size = font_sizze + 2
-        oPara1.Range.Font.Bold = True
+        oPara1.Range.Font.Bold = CInt(True)
         oPara1.Format.SpaceAfter = 1                '24 pt spacing after paragraph. 
         oPara1.Range.InsertParagraphAfter()
 
         oPara2 = oDoc.Content.Paragraphs.Add(oDoc.Bookmarks.Item("\endofdoc").Range)
         oPara2.Range.Font.Size = font_sizze
         oPara2.Format.SpaceAfter = 1
-        oPara2.Range.Font.Bold = False
+        oPara2.Range.Font.Bold = CInt(False)
         oPara2.Range.Text = "Berekening krimpen en persen van as en hub" & vbCrLf
         oPara2.Range.InsertParagraphAfter()
 
@@ -360,8 +360,8 @@ Public Class Form1
         oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 5, 2)
         oTable.Range.ParagraphFormat.SpaceAfter = 1
         oTable.Range.Font.Size = font_sizze
-        oTable.Range.Font.Bold = False
-        oTable.Rows.Item(1).Range.Font.Bold = True
+        oTable.Range.Font.Bold = CInt(False)
+        oTable.Rows.Item(1).Range.Font.Bold = CInt(True)
 
         row = 1
         oTable.Cell(row, 1).Range.Text = "Project Name"
@@ -381,7 +381,7 @@ Public Class Form1
 
         oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.5)   'Change width of columns 1 & 2.
         oTable.Columns.Item(2).Width = oWord.InchesToPoints(2)
-        oTable.Rows.Item(1).Range.Font.Bold = True
+        oTable.Rows.Item(1).Range.Font.Bold = CInt(True)
         oDoc.Bookmarks.Item("\endofdoc").Range.InsertParagraphAfter()
 
         '----------------------------------------------
@@ -389,45 +389,45 @@ Public Class Form1
         oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 13, 3)
         oTable.Range.ParagraphFormat.SpaceAfter = 1
         oTable.Range.Font.Size = font_sizze
-        oTable.Range.Font.Bold = False
-        oTable.Rows.Item(1).Range.Font.Bold = True
+        oTable.Range.Font.Bold = CInt(False)
+        oTable.Rows.Item(1).Range.Font.Bold = CInt(True)
         row = 1
         oTable.Cell(row, 1).Range.Text = "Input Data"
         row += 1
         oTable.Cell(row, 1).Range.Text = "Diameter as (d_a)"
-        oTable.Cell(row, 2).Range.Text = NumericUpDown1.Value
+        oTable.Cell(row, 2).Range.Text = CType(NumericUpDown1.Value, String)
         oTable.Cell(row, 3).Range.Text = "[mm]"
         row += 1
         oTable.Cell(row, 1).Range.Text = "Insteek lengte as (l)"
-        oTable.Cell(row, 2).Range.Text = NumericUpDown2.Value
+        oTable.Cell(row, 2).Range.Text = CType(NumericUpDown2.Value, String)
         oTable.Cell(row, 3).Range.Text = "[mm]"
         row += 1
         oTable.Cell(row, 1).Range.Text = "Buiten diameter hub (D)"
-        oTable.Cell(row, 2).Range.Text = NumericUpDown4.Value
+        oTable.Cell(row, 2).Range.Text = CType(NumericUpDown4.Value, String)
         oTable.Cell(row, 3).Range.Text = "[mm]"
         row += 1
         oTable.Cell(row, 1).Range.Text = "Motor vermogen"
-        oTable.Cell(row, 2).Range.Text = NumericUpDown6.Value
+        oTable.Cell(row, 2).Range.Text = CType(NumericUpDown6.Value, String)
         oTable.Cell(row, 3).Range.Text = "[Kw]"
         row += 1
 
         oTable.Cell(row, 1).Range.Text = "Toerental"
-        oTable.Cell(row, 2).Range.Text = NumericUpDown5.Value
+        oTable.Cell(row, 2).Range.Text = CType(NumericUpDown5.Value, String)
         oTable.Cell(row, 3).Range.Text = "[rpm]"
 
         '---- -----
         row += 1
         oTable.Cell(row, 1).Range.Text = "Bedrijfstoeslag factor"
-        oTable.Cell(row, 2).Range.Text = NumericUpDown7.Value
+        oTable.Cell(row, 2).Range.Text = CType(NumericUpDown7.Value, String)
         oTable.Cell(row, 3).Range.Text = "[-]"
 
         row += 1
         oTable.Cell(row, 1).Range.Text = "Frictie coefficient"
-        oTable.Cell(row, 2).Range.Text = NumericUpDown3.Value
+        oTable.Cell(row, 2).Range.Text = CType(NumericUpDown3.Value, String)
         oTable.Cell(row, 3).Range.Text = "[-]"
         row += 1
         oTable.Cell(row, 1).Range.Text = "E modulus"
-        oTable.Cell(row, 2).Range.Text = NumericUpDown8.Value
+        oTable.Cell(row, 2).Range.Text = CType(NumericUpDown8.Value, String)
         oTable.Cell(row, 3).Range.Text = "[N/mm2]"
         row += 1
         '---- -----
@@ -436,16 +436,16 @@ Public Class Form1
         oTable.Cell(row, 3).Range.Text = "[mm/mm.K]"
         row += 1
         oTable.Cell(row, 1).Range.Text = "Opwarming tbv montage"
-        oTable.Cell(row, 2).Range.Text = NumericUpDown9.Value
+        oTable.Cell(row, 2).Range.Text = CType(NumericUpDown9.Value, String)
         oTable.Cell(row, 3).Range.Text = "[C]"
         row += 1
         oTable.Cell(row, 1).Range.Text = "Ruwheid as"
-        oTable.Cell(row, 2).Range.Text = ComboBox1.SelectedItem
+        oTable.Cell(row, 2).Range.Text = CType(ComboBox1.SelectedItem, String)
         oTable.Cell(row, 3).Range.Text = "[mu]"
         row += 1
         '---- --------
         oTable.Cell(row, 1).Range.Text = "Ruwheid hub"
-        oTable.Cell(row, 2).Range.Text = ComboBox2.SelectedItem
+        oTable.Cell(row, 2).Range.Text = CType(ComboBox2.SelectedItem, String)
         oTable.Cell(row, 3).Range.Text = "[mu]"
 
         oTable.Columns.Item(1).Width = oWord.InchesToPoints(2.9)   'Change width of columns 1 & 2.
@@ -457,8 +457,8 @@ Public Class Form1
         oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 16, 3)
         oTable.Range.ParagraphFormat.SpaceAfter = 1
         oTable.Range.Font.Size = font_sizze
-        oTable.Range.Font.Bold = False
-        oTable.Rows.Item(1).Range.Font.Bold = True
+        oTable.Range.Font.Bold = CInt(False)
+        oTable.Rows.Item(1).Range.Font.Bold = CInt(True)
         row = 1
         oTable.Cell(row, 1).Range.Text = "Results"
         row += 1
@@ -486,7 +486,7 @@ Public Class Form1
         oTable.Cell(row, 2).Range.Text = TextBox10.Text
         oTable.Cell(row, 3).Range.Text = "[N/mm]"
         row += 2
-        oTable.Rows.Item(row).Range.Font.Bold = True
+        oTable.Rows.Item(row).Range.Font.Bold = CInt(True)
         oTable.Cell(row, 1).Range.Text = "Pers of krimpmaat (koude maat)"
         row += 1
         oTable.Cell(row, 1).Range.Text = "d/s verhouding > 850"
@@ -501,7 +501,7 @@ Public Class Form1
         oTable.Cell(row, 2).Range.Text = TextBox11.Text
         oTable.Cell(row, 3).Range.Text = "[ton]"
         row += 2
-        oTable.Rows.Item(row).Range.Font.Bold = True
+        oTable.Rows.Item(row).Range.Font.Bold = CInt(True)
         oTable.Cell(row, 1).Range.Text = "Warme maat"
         row += 1
         oTable.Cell(row, 1).Range.Text = "Thermische uitzetting AS"
@@ -522,10 +522,10 @@ Public Class Form1
         oTable = oDoc.Tables.Add(oDoc.Bookmarks.Item("\endofdoc").Range, 7, 3)
         oTable.Range.ParagraphFormat.SpaceAfter = 1
         oTable.Range.Font.Size = font_sizze
-        oTable.Range.Font.Bold = False
-        oTable.Rows.Item(1).Range.Font.Bold = True
+        oTable.Range.Font.Bold = CInt(False)
+        oTable.Rows.Item(1).Range.Font.Bold = CInt(True)
         row = 1
-        oTable.Rows.Item(row).Range.Font.Bold = True
+        oTable.Rows.Item(row).Range.Font.Bold = CInt(True)
         oTable.Cell(row, 1).Range.Text = "Samenvatting RVS hub op stalen as"
         row += 1
         oTable.Cell(row, 1).Range.Text = "Bedrijfstemperatuur"
@@ -553,7 +553,7 @@ Public Class Form1
 
         If ss_hot < ss_slip Then     'Slip at operating temperatuur
             row += 1
-            oTable.Rows.Item(row).Range.Font.Bold = True
+            oTable.Rows.Item(row).Range.Font.Bold = CInt(True)
             oTable.Cell(row, 1).Range.Text = "hub zit los !!"
         Else
             oTable.Cell(row, 1).Range.Text = "hub zit vast !!"
@@ -573,7 +573,7 @@ Public Class Form1
         oPara3 = oDoc.Content.Paragraphs.Add
         Try
             With oPara3.Range.InlineShapes.AddPicture(FilePath & "\TestFile.jpg")
-                .LockAspectRatio = True
+                .LockAspectRatio = CType(True, Microsoft.Office.Core.MsoTriState)
                 .Width = 250
             End With
         Catch ex As Exception
@@ -583,7 +583,7 @@ Public Class Form1
 
         Try
             ufilename = "C:\temp\hub_krimp_" & DateTime.Now.ToString("yyyy_MM_dd__HH_mm_ss") & ".docx"
-            oDoc.SaveAs(ufilename)
+            oDoc.SaveAs(ufilename.ToString)
         Catch ex As Exception
             MessageBox.Show(ex.Message)  ' Show the exception's message.
         End Try
