@@ -1,9 +1,9 @@
 ﻿Imports System.Math
-Imports System
+
 Imports System.Globalization
 Imports System.Threading
 Imports Word = Microsoft.Office.Interop.Word
-Imports System.Runtime.InteropServices
+Imports System.Management
 
 Public Class Form1
 
@@ -143,10 +143,47 @@ Public Class Form1
     "Zinc;34.2"}
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim Pro_user, HD_number As String
+        Dim user_list As New List(Of String)
+        Dim hard_disk_list As New List(Of String)
+        Dim pass_name As Boolean = False
+        Dim pass_disc As Boolean = False
+
         Thread.CurrentThread.CurrentCulture = New CultureInfo("en-US")      'Decimal separator "."
         Thread.CurrentThread.CurrentUICulture = New CultureInfo("en-US")    'Decimal separator "."
         Dim words() As String
         Dim separators() As String = {";"}
+
+
+        '------ allowed users with hard disc id's -----
+        user_list.Add("GP")
+        hard_disk_list.Add("3879121263")        'Privee PC, graslaan25
+
+        user_list.Add("GerritP")
+        hard_disk_list.Add("2012062914345300")  'VTK PC, GP
+
+        user_list.Add("GerritP")
+        hard_disk_list.Add("14290CEE95FC")       'VTK laptop, GP
+
+        user_list.Add("KarelB")
+        hard_disk_list.Add("165214800214")    'VTK PC, Karel Bakker
+
+        Pro_user = Environment.UserName     'User name on the screen
+        HD_number = HardDisc_Id()           'Harddisk identification
+        Me.Text &= "  (" & Pro_user & ")"
+
+        'Check user name and disc_id
+        For i = 0 To user_list.Count - 1
+            If StrComp(LCase(Pro_user), LCase(user_list.Item(i))) = 0 Then pass_name = True
+            If CBool(HD_number = Trim(hard_disk_list(i))) Then pass_disc = True
+        Next
+
+        If pass_name = False Or pass_disc = False Then
+            MessageBox.Show("VTK fan selection program" & vbCrLf & "Access denied, contact GPa" & vbCrLf)
+            MessageBox.Show("User_name= " & Pro_user & ", Pass name= " & pass_name.ToString)
+            MessageBox.Show("HD_id= *" & HD_number & "*" & ", Pass disc= " & pass_disc.ToString)
+            Environment.Exit(0)
+        End If
 
         '-------Fill combobox1, Surface with RA------------------
         For hh = 0 To RA_surf.Length - 1               'Fill combobox 1,2
@@ -627,7 +664,25 @@ Public Class Form1
         TextBox37.Text = uitz_as.ToString
     End Sub
 
-    Private Sub Label65_Click(sender As Object, e As EventArgs) Handles Label65.Click
+    Public Function HardDisc_Id() As String
+        'Add system.management as reference !!
+        Dim tmpStr2 As String = ""
+        Dim myScop As New ManagementScope("\\" & Environment.MachineName & "\root\cimv2")
+        Dim oQuer As New SelectQuery("SELECT * FROM WIN32_DiskDrive")
 
-    End Sub
+        Dim oResult As New ManagementObjectSearcher(myScop, oQuer)
+        Dim oIte As ManagementObject
+        Dim oPropert As PropertyData
+        For Each oIte In oResult.Get()
+            For Each oPropert In oIte.Properties
+                If Not oPropert.Value Is Nothing AndAlso oPropert.Name = "SerialNumber" Then
+                    tmpStr2 = oPropert.Value.ToString
+                    Exit For
+                End If
+            Next
+            Exit For
+        Next
+        Return (Trim(tmpStr2))         'Harddisk identification
+    End Function
+
 End Class
