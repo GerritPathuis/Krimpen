@@ -166,7 +166,10 @@ Public Class Form1
         hard_disk_list.Add("14290CEE95FC")       'VTK laptop, GP
 
         user_list.Add("KarelB")
-        hard_disk_list.Add("165214800214")    'VTK PC, Karel Bakker
+        hard_disk_list.Add("165214800214")      'VTK PC, Karel Bakker
+
+        user_list.Add("JeroenA")
+        hard_disk_list.Add("171095402070")      'VTK desktop, Jeroen
 
         Pro_user = Environment.UserName     'User name on the screen
         HD_number = HardDisc_Id()           'Harddisk identification
@@ -178,12 +181,12 @@ Public Class Form1
             If CBool(HD_number = Trim(hard_disk_list(i))) Then pass_disc = True
         Next
 
-        If pass_name = False Or pass_disc = False Then
-            MessageBox.Show("VTK fan selection program" & vbCrLf & "Access denied, contact GPa" & vbCrLf)
-            MessageBox.Show("User_name= " & Pro_user & ", Pass name= " & pass_name.ToString)
-            MessageBox.Show("HD_id= *" & HD_number & "*" & ", Pass disc= " & pass_disc.ToString)
-            Environment.Exit(0)
-        End If
+        'If pass_name = False Or pass_disc = False Then
+        '    MessageBox.Show("VTK fan selection program" & vbCrLf & "Access denied, contact GPa" & vbCrLf)
+        '    MessageBox.Show("User_name= " & Pro_user & ", Pass name= " & pass_name.ToString)
+        '    MessageBox.Show("HD_id= *" & HD_number & "*" & ", Pass disc= " & pass_disc.ToString)
+        '    Environment.Exit(0)
+        'End If
 
         '-------Fill combobox1, Surface with RA------------------
         For hh = 0 To RA_surf.Length - 1               'Fill combobox 1,2
