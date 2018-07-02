@@ -364,14 +364,16 @@ Partial Class Form1
         '
         'NumericUpDown10
         '
+        Me.NumericUpDown10.BackColor = System.Drawing.Color.Yellow
         Me.NumericUpDown10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumericUpDown10.Location = New System.Drawing.Point(264, 82)
         Me.NumericUpDown10.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.NumericUpDown10.Minimum = New Decimal(New Integer() {100, 0, 0, 0})
         Me.NumericUpDown10.Name = "NumericUpDown10"
         Me.NumericUpDown10.Size = New System.Drawing.Size(81, 24)
         Me.NumericUpDown10.TabIndex = 24
         Me.NumericUpDown10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.NumericUpDown10.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.NumericUpDown10.Value = New Decimal(New Integer() {200, 0, 0, 0})
         '
         'Label45
         '
@@ -453,7 +455,7 @@ Partial Class Form1
         Me.NumericUpDown13.Size = New System.Drawing.Size(81, 24)
         Me.NumericUpDown13.TabIndex = 14
         Me.NumericUpDown13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.NumericUpDown13.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.NumericUpDown13.Value = New Decimal(New Integer() {250, 0, 0, 0})
         '
         'TextBox20
         '
@@ -1203,7 +1205,8 @@ Partial Class Form1
         Me.NumericUpDown9.BackColor = System.Drawing.Color.Yellow
         Me.NumericUpDown9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumericUpDown9.Location = New System.Drawing.Point(262, 14)
-        Me.NumericUpDown9.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.NumericUpDown9.Maximum = New Decimal(New Integer() {250, 0, 0, 0})
+        Me.NumericUpDown9.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown9.Name = "NumericUpDown9"
         Me.NumericUpDown9.Size = New System.Drawing.Size(81, 24)
         Me.NumericUpDown9.TabIndex = 1
