@@ -219,8 +219,6 @@ Public Class Form1
 
         Calc()
     End Sub
-
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click, NumericUpDown9.ValueChanged, NumericUpDown7.ValueChanged, NumericUpDown6.ValueChanged, NumericUpDown5.ValueChanged, NumericUpDown4.ValueChanged, NumericUpDown2.ValueChanged, NumericUpDown1.ValueChanged, NumericUpDown3.ValueChanged, NumericUpDown13.ValueChanged, NumericUpDown10.ValueChanged, ComboBox2.SelectedIndexChanged, ComboBox1.SelectedIndexChanged, ComboBox5.SelectedIndexChanged, ComboBox4.SelectedIndexChanged
         Calc()
     End Sub
@@ -263,7 +261,7 @@ Public Class Form1
         Elast_mod = NumericUpDown8.Value
 
         delta_temp = NumericUpDown9.Value                   'Montage temp
-        Bedrijfs_temp = NumericUpDown13.Value - NumericUpDown11.Value   'Befrijf temp
+        Bedrijfs_temp = NumericUpDown13.Value - NumericUpDown11.Value   'Bedrijfs temp
         production_s = NumericUpDown10.Value                'koude productie S maat
 
         '----------- rekenen -----------
@@ -318,7 +316,7 @@ Public Class Form1
             TextBox6.Text = Round(sd_verhouding, 4).ToString            's/d 
             TextBox8.Text = Round(1 / sd_verhouding, 0).ToString        'd/s
             TextBox9.Text = Round(s_maat_mu, 0).ToString                's_maat
-            TextBox10.Text = Round(combi_spanning, 0).ToString           'gecombineerde spanning hub
+            TextBox10.Text = Round(combi_spanning, 0).ToString          'gecombineerde spanning hub
 
             TextBox11.Text = Round(F_pers, 1).ToString                  'Perskracht [ton]
             TextBox14.Text = Round(S_verlies, 1).ToString               'Verlies door oppervlakte ruwheid [mu]
