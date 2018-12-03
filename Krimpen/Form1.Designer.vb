@@ -1788,7 +1788,7 @@ Partial Class Form1
         '
         Me.NumericUpDown15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumericUpDown15.Location = New System.Drawing.Point(364, 67)
-        Me.NumericUpDown15.Maximum = New Decimal(New Integer() {3000, 0, 0, 0})
+        Me.NumericUpDown15.Maximum = New Decimal(New Integer() {13000, 0, 0, 0})
         Me.NumericUpDown15.Name = "NumericUpDown15"
         Me.NumericUpDown15.Size = New System.Drawing.Size(81, 24)
         Me.NumericUpDown15.TabIndex = 22
@@ -1938,7 +1938,7 @@ Partial Class Form1
         Me.Controls.Add(Me.TabControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
-        Me.Text = "Persen en Krimpen 08-02-2017"
+        Me.Text = "Persen en Krimpen 03-12-2018"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
