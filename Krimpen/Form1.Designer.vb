@@ -26,7 +26,6 @@ Partial Class Form1
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Label69 = New System.Windows.Forms.Label()
-        Me.Label64 = New System.Windows.Forms.Label()
         Me.GroupBox11 = New System.Windows.Forms.GroupBox()
         Me.Label70 = New System.Windows.Forms.Label()
         Me.Label50 = New System.Windows.Forms.Label()
@@ -176,6 +175,8 @@ Partial Class Form1
         Me.TextBox33 = New System.Windows.Forms.TextBox()
         Me.Label53 = New System.Windows.Forms.Label()
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox21 = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox11.SuspendLayout()
@@ -231,8 +232,8 @@ Partial Class Form1
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.TextBox2)
         Me.TabPage1.Controls.Add(Me.Label69)
-        Me.TabPage1.Controls.Add(Me.Label64)
         Me.TabPage1.Controls.Add(Me.GroupBox11)
         Me.TabPage1.Controls.Add(Me.GroupBox10)
         Me.TabPage1.Controls.Add(Me.Button2)
@@ -263,16 +264,6 @@ Partial Class Form1
         Me.Label69.Size = New System.Drawing.Size(98, 15)
         Me.Label69.TabIndex = 20
         Me.Label69.Text = "1000 μm =1 mm"
-        '
-        'Label64
-        '
-        Me.Label64.AutoSize = True
-        Me.Label64.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label64.Location = New System.Drawing.Point(348, 517)
-        Me.Label64.Name = "Label64"
-        Me.Label64.Size = New System.Drawing.Size(358, 15)
-        Me.Label64.TabIndex = 19
-        Me.Label64.Text = "http://www.amesweb.info/FitTolerance/PreferredTolerances.aspx"
         '
         'GroupBox11
         '
@@ -365,7 +356,7 @@ Partial Class Form1
         'NumericUpDown10
         '
         Me.NumericUpDown10.BackColor = System.Drawing.Color.Yellow
-        Me.NumericUpDown10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.NumericUpDown10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NumericUpDown10.Location = New System.Drawing.Point(264, 82)
         Me.NumericUpDown10.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.NumericUpDown10.Minimum = New Decimal(New Integer() {100, 0, 0, 0})
@@ -1180,6 +1171,7 @@ Partial Class Form1
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.TextBox21)
         Me.GroupBox4.Controls.Add(Me.Label13)
         Me.GroupBox4.Controls.Add(Me.NumericUpDown9)
         Me.GroupBox4.Controls.Add(Me.Label24)
@@ -1196,9 +1188,9 @@ Partial Class Form1
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.Location = New System.Drawing.Point(13, 19)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(189, 18)
+        Me.Label13.Size = New System.Drawing.Size(217, 18)
         Me.Label13.TabIndex = 0
-        Me.Label13.Text = "Opwarming tbv montage [c]"
+        Me.Label13.Text = "Opwarming hub tbv montage [c]"
         '
         'NumericUpDown9
         '
@@ -1208,7 +1200,7 @@ Partial Class Form1
         Me.NumericUpDown9.Maximum = New Decimal(New Integer() {250, 0, 0, 0})
         Me.NumericUpDown9.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown9.Name = "NumericUpDown9"
-        Me.NumericUpDown9.Size = New System.Drawing.Size(81, 24)
+        Me.NumericUpDown9.Size = New System.Drawing.Size(83, 24)
         Me.NumericUpDown9.TabIndex = 1
         Me.NumericUpDown9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.NumericUpDown9.Value = New Decimal(New Integer() {170, 0, 0, 0})
@@ -1930,6 +1922,25 @@ Partial Class Form1
         Me.ComboBox3.Size = New System.Drawing.Size(427, 24)
         Me.ComboBox3.TabIndex = 15
         '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(337, 507)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(388, 20)
+        Me.TextBox2.TabIndex = 21
+        Me.TextBox2.Text = "http://www.amesweb.info/FitTolerance/PreferredTolerances.aspx"
+        '
+        'TextBox21
+        '
+        Me.TextBox21.Enabled = False
+        Me.TextBox21.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox21.Location = New System.Drawing.Point(262, 44)
+        Me.TextBox21.Name = "TextBox21"
+        Me.TextBox21.Size = New System.Drawing.Size(83, 24)
+        Me.TextBox21.TabIndex = 33
+        Me.TextBox21.Text = "0"
+        Me.TextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2129,7 +2140,6 @@ Partial Class Form1
     Friend WithEvents Label53 As Label
     Friend WithEvents TextBox27 As TextBox
     Friend WithEvents TextBox28 As TextBox
-    Friend WithEvents Label64 As Label
     Friend WithEvents TextBox33 As TextBox
     Friend WithEvents ComboBox3 As ComboBox
     Friend WithEvents GroupBox14 As GroupBox
@@ -2156,4 +2166,6 @@ Partial Class Form1
     Friend WithEvents Label68 As Label
     Friend WithEvents Label69 As Label
     Friend WithEvents Label70 As Label
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox21 As TextBox
 End Class

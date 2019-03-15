@@ -309,6 +309,8 @@ Public Class Form1
             TextBox35.Text = Round(Therm_uitzetting_hub, 0).ToString     'Thermische expansie HUB
             TextBox34.Text = Round(Therm_uitzetting_shaft, 0).ToString  'Thermische expansie SHAFT
 
+            TextBox21.Text = Therm_uitzetting_hub.ToString("0")  'Thermische expansie HUB
+
             TextBox3.Text = Round(ring_dikte, 1).ToString
             TextBox4.Text = Round(p_vlaktedruk, 1).ToString             'Radiale spanning = vlaktedrukColor.Red
             TextBox5.Text = Round(p_vlaktedruk, 1).ToString             'Vlaktedruk as
