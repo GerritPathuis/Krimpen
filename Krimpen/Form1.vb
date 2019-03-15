@@ -353,8 +353,8 @@ Public Class Form1
                 Label37.Visible = True
             End If
 
-            If NumericUpDown1.Value < NumericUpDown4.Value - 20 Then      'Onmogelijke hub dimensie
-                NumericUpDown4.BackColor = SystemColors.Window
+            If NumericUpDown1.Value < NumericUpDown4.Value - 14 Then      'Onmogelijke hub dimensie
+                NumericUpDown4.BackColor = Color.LightGreen
             Else
                 NumericUpDown4.BackColor = Color.Red
             End If
