@@ -68,7 +68,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>favicon %283%29.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>0F61D5DB2454611DB7379F1B54C3B29186658034</ManifestCertificateThumbprint>
@@ -199,6 +199,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="favicon %283%29.ico" />
     <Content Include="favicon.ico" />
     <Content Include="Icons_Fan_Green.ico" />
   </ItemGroup>
