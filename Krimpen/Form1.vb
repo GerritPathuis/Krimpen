@@ -333,14 +333,29 @@ Public Class Form1
                 TextBox5.BackColor = Color.Red
             End If
 
+            TextBox6.Enabled = True
+            TextBox8.Enabled = True
+            TextBox9.Enabled = True
+            TextBox6.ReadOnly = True
+            TextBox8.ReadOnly = True
+            TextBox9.ReadOnly = True
+
             If 1 / sd_verhouding > 750 Then     'Check krimpmaat op over-stressed
                 TextBox6.BackColor = Color.LightGreen
                 TextBox8.BackColor = Color.LightGreen
                 TextBox9.BackColor = Color.LightGreen
+                TextBox6.ForeColor = Color.Black
+                TextBox8.ForeColor = Color.Black
+                TextBox9.ForeColor = Color.Black
+                Label64.Visible = False
             Else
                 TextBox6.BackColor = Color.Red
                 TextBox8.BackColor = Color.Red
                 TextBox9.BackColor = Color.Red
+                TextBox6.ForeColor = Color.White
+                TextBox8.ForeColor = Color.White
+                TextBox9.ForeColor = Color.Yellow
+                Label64.Visible = True
             End If
 
             If actual_hot_s > s_maat_mu Then     'Slip at operating temperatuur
