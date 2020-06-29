@@ -106,6 +106,7 @@ Public Class Form1
     "Stainless - S31700;15.8",
     "Stainless - S31703;16.6",
     "Stainless - S32100;16.6",
+    "Super Duplex - S32760;13.0",
     "Stainless - S34700;16.6",
     "Stainless - S34800;16.7",
     "Stainless - S38400;17.3",

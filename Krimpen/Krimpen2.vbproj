@@ -27,7 +27,7 @@
     <InstallUrl>\\DCF1\data2%24\Engineering\VBasic\Krimpen\</InstallUrl>
     <ProductName>Krimpen</ProductName>
     <PublisherName>Pathuis Heavy Industries</PublisherName>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
